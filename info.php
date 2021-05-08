@@ -2,7 +2,7 @@
 //  phpinfo();
 
 
-$username = "root@localhost";
+$username = "root";
 $passwd = "X34G8gjNabFkcq";
 $hostName = "vmi566217.contaboserver.net";
 $dbName = "fruits";
