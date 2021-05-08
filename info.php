@@ -5,7 +5,7 @@
 $username = "root";
 $passwd = "X34G8gjNabFkcq";
 // $hostName = "vmi566217.contaboserver.net";
-$hostName = "localhost:3306";
+$hostName = "localhost";
 $dbName = "fruits";
 
 $conn = mysqli_connect($hostName, $username, $passwd, $dbName);
