@@ -1,6 +1,6 @@
 <?php
 //  phpinfo();
-
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $username = "root";
 $passwd = "X34G8gjNabFkcq";
