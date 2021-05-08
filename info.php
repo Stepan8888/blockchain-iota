@@ -2,10 +2,10 @@
 //  phpinfo();
 
 
-$username = "root";
+$username = "root@localhost";
 $passwd = "X34G8gjNabFkcq";
-$hostName = "127.0.0.1";
-$dbName = "contaboServer";
+$hostName = "localhost:3306";
+$dbName = "fruits";
 
 $conn = mysqli_connect($hostName, $username, $passwd, $dbName);
 
