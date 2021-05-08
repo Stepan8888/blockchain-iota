@@ -4,11 +4,12 @@
 
 $username = "root@localhost";
 $passwd = "X34G8gjNabFkcq";
-$hostName = "localhost:3306";
+$hostName = "vmi566217.contaboserver.net";
 $dbName = "fruits";
 
 $conn = mysqli_connect($hostName, $username, $passwd, $dbName);
 
 if (!$conn) {
+    echo "cos";
     echo "connection not working";
 }
