@@ -11,7 +11,8 @@ $dbName = "fruits";
 $conn = mysqli_connect($hostName, $username, $passwd, $dbName);
 
 if (!$conn) {
-    echo "cosfsafs";
+    // echo "cosfsafs";
+    echo mysqli_connect_error();
     echo "connection not working";
     $sql = "SELECT * FROM fruits";
     // mysqli_query($sql);
