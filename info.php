@@ -14,6 +14,17 @@ if (!$conn) {
     // echo "cosfsafs";
     echo mysqli_connect_error();
     echo "connection not working";
+} else {
     $sql = "SELECT * FROM fruits";
-    // mysqli_query($sql);
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "id: " . $row["id"] . " " . $row["name"] . "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
 }
