@@ -11,6 +11,7 @@
 
 body{
     height: 100%;
+    background-color: darkblue;
 }
 
 header{
@@ -22,12 +23,13 @@ header{
 }
 
 main{
+    padding-top: 150px;
     height: 100%;
-    background-color: grey;
+    
 }
 
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 40px;
@@ -101,11 +103,31 @@ footer{
 
 #tstream {
     
-    width: 1280px;
-    height: 702px;
+    width: 720px;
+    height: 480px;
     margin: 0 auto;
     margin-top: 100px;
     background-color: black;
+}
+#graphs{
+    margin-top: 150px;
+    
+}
+#graph1 {
+    width: 620px;
+    height: 380px;
+    background-color: blue;
+    float: left;
+    margin-left: 100px;
+}
+
+#graph2 {
+    width: 620px;
+    height: 380px;
+    background-color: red;
+    float: right;
+    margin-right:100px;
+    
 }
 
 #block{
