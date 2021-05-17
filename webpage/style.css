@@ -22,7 +22,8 @@ header{
 }
 
 main{
-    height: 80%;
+    height: 100%;
+    background-color: grey;
 }
 
 footer{
@@ -96,6 +97,15 @@ footer{
     font-size: 90px;
     line-height: 90px;
 
+}
+
+#tstream {
+    
+    width: 1280px;
+    height: 702px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: black;
 }
 
 #block{
@@ -187,3 +197,4 @@ footer{
 
     color: #FFFFFF;
 }
+
