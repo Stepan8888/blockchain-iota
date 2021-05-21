@@ -37,7 +37,22 @@ footer{
     text-align: center;
     background: linear-gradient(270deg, #0085FF 0%, #00F4C8 100%);
 }
-
+table {
+    width: 70%;
+    margin-left: 100px;
+    font-family: lato;
+    color: white;
+    
+}
+th {
+    text-align: left;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 26px;
+}
+td{
+    padding-bottom: 10px;
+}
 #trinityBlock{
     display: inline-block;
     float: left;
@@ -111,6 +126,7 @@ footer{
 }
 #graphs{
     margin-top: 150px;
+    margin-bottom: 600px;
     
 }
 #graph1 {
@@ -128,6 +144,17 @@ footer{
     float: right;
     margin-right:100px;
     
+}
+
+#links {
+    border-top-style: solid;
+    border-top-width: 5px;
+    border-top-color: white;
+    width: 100%;
+    background-color: #191919;
+    height: 220px;
+    margin-bottom: 40px;
+    float: left;
 }
 
 #block{
