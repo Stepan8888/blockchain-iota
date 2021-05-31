@@ -17,19 +17,19 @@ body{
 header{
     position: fixed;
     width: 100%;
-    height: 100px ;
+    height: 100px;
 
     background: #000000;
 }
 
 main{
-    padding-top: 150px;
+    padding-top: 90px;
     height: 100%;
     
 }
 
 footer{
-    position: fixed;
+position: sticky;
     bottom: 0;
     width: 100%;
     height: 40px;
@@ -157,7 +157,6 @@ td{
     width: 100%;
     background-color: #191919;
     height: 220px;
-    margin-bottom: 40px;
     float: left;
 }
 
@@ -250,4 +249,3 @@ td{
 
     color: #FFFFFF;
 }
-
