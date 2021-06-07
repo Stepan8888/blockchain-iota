@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "X34G8gjNabFkcq",
     database: "iotamp_db"
 });
 
@@ -75,7 +75,7 @@ const selectTransactions = function findTransaction(transactonId) {
 //     return a;
 // })
 
-const insertTransaction = function instTransaction(transactionId,iotaValue,iotaAmount,kwh) {
+const insertTransaction = function instTransaction(transactionId, iotaValue, iotaAmount, kwh) {
     // console.log(transactionId);
     // let id = transactionId;
     // console.log(id);
@@ -90,7 +90,7 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
         var query_str =
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
-        var query_var = [transactionId,iotaValue,iotaAmount,kwh];
+        var query_var = [transactionId, iotaValue, iotaAmount, kwh];
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,
