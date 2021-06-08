@@ -105,7 +105,7 @@ async function main() {
     var data = await call_print_data(); // The main function will wait 5 minutes here
     console.log(data)
 }
-main();
-// run();
+// main();
+run();
 
 
