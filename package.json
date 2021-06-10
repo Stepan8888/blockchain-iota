@@ -1,0 +1,8 @@
+{
+  "name": "blockchain-iota",
+  "version": "1.0.0",
+  "dependencies": {
+    "@iota/client": "^0.6.1",
+    "mysql": "^2.18.1"
+  }
+}
