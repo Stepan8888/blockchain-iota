@@ -8,3 +8,8 @@ function rechangeItem() {
     document.getElementById("fireFly").style.color = '#FFFFFF';
     document.getElementById("trinityLogo").style.backgroundImage = "url(images/iota-miota-logo.png)";
 }// тут всё также. но наобарот. протсес происходящий про отводе курсора.
+
+function show(state) {
+    document.getElementById('popUp').style.display = state;
+    document.getElementById('gray').style.display = state;
+}

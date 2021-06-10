@@ -12,7 +12,7 @@
 
 
 <header>
-    <div id = "trinityBlock" onmouseover="changeItem()" onmouseout="rechangeItem()">
+    <div id = "trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
         <span id = "fireFly">FireFly</span>
         <div id = "trinityLogo"></div>
     </div>
@@ -79,6 +79,11 @@
     <span id = "date">© 2021</span>
 </footer>
 
+<div id="gray" onclick="show('none')"></div>
+<div id="popUp">
+    <h2><b>Donate</b></h2>
+    <img alt = "donate QR code" src = images/qr_donate.png>
+</div>
 
 </body>
 
