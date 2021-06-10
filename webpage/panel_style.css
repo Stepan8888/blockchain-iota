@@ -21,6 +21,7 @@ header h3{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Antonio', sans-serif;
+    user-select: none;
     font-style: normal;
     font-weight: bold;
     font-size: 60px;
@@ -36,7 +37,7 @@ header h3{
     line-height: 40px;
 }
 
-.fa-edit, .fa-trash{
+.fa-edit, .fa-trash, .fa-window-close{
     cursor: pointer;
     margin: 15px 15px 0;
 }
@@ -46,6 +47,13 @@ header h3{
 }
 
 .fa-trash{
+    position: absolute;
+    right: 0;
+    color: #ff1e25;
+}
+
+.fa-window-close{
+    font-size: 22px;
     position: absolute;
     right: 0;
     color: #ff1e25;
@@ -82,4 +90,51 @@ header h3{
 #container{
     width: 100%;
     display: inline-flex;
+}
+
+#gray{
+    background-color: rgba(1, 1, 1, 0.3);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+#popUp{
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #D8DBE2;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+}
+
+#popUp h2{
+    margin-top: 15px;
+    font-style: normal;
+    font-size: 28px;
+    line-height: 40px;
+    color: #212738;
+}
+
+#popUp img{
+    margin: 10px auto;
+}
+
+#popUp-formBlock{
+    text-align: center;
+}
+
+.form-group .form-control{
+    width: 90%;
+    margin: 15px auto;
 }
