@@ -25,7 +25,7 @@ async function run() {
 
     const outputs = await client.getAddressOutputs('iota1qz4qx5xrl59wnnvswxk4mjvhjkdk25yveft3us2hgxd5tn2l6gz4vnwld2d');
 
-    console.log(outputs);
+    // console.log(outputs);
 
     for (var i = 0; i < outputs.length; i++) {
 
@@ -105,7 +105,7 @@ async function main() {
     var data = await call_print_data(); // The main function will wait 5 minutes here
     console.log(data)
 }
-// main();
-run();
+main();
+// run();
 
 
