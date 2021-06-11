@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@iota/client": "^0.6.1",
+    "coingecko-api": "^1.0.10",
     "mysql": "^2.18.1"
   }
 }
