@@ -1,7 +1,7 @@
 
 // var done=false;
 var test = 0;
-var testSelect=0;
+var testSelect = 0;
 
 async function run() {
 
@@ -15,7 +15,7 @@ async function run() {
     // console.log(iotaValue);
 
     const connectionDb = require('./connection.js');
-    const {ClientBuilder} = require('@iota/client');
+    const { ClientBuilder } = require('@iota/client');
 
 
     // client will connect to testnet by default
@@ -53,18 +53,18 @@ async function run() {
 
     test++;
     // console.log(test);
-    console.log("Select run "+ test++);
-    done=true;
+    console.log("Select run " + test++);
+    done = true;
     // https://chrysalis-nodes.iota.org
 }
 
 async function getIotaValue() {
     const CoinGecko = require('coingecko-api');
 
-//2. Initiate the CoinGecko API Client
+    //2. Initiate the CoinGecko API Client
     const CoinGeckoClient = new CoinGecko();
 
-//3. Make calls
+    //3. Make calls
     return new Promise(function (resolve) {
         async function cos() {
             let dataObt = await CoinGeckoClient.simple.price({
@@ -96,7 +96,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
         //     clearInterval(interval);
         //     resolve(res); // result of promise
         // }
-    }, 10000 ); // 10 sec interval
+    }, 10000); // 10 sec interval
 });
 
 
@@ -105,7 +105,7 @@ async function main() {
     var data = await call_print_data(); // The main function will wait 5 minutes here
     console.log(data)
 }
-main();
-// run();
+// main();
+run();
 
 
