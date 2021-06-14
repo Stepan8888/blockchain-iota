@@ -17,18 +17,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="panel_style.css">
+
+    <script src = script.js></script>
     <title>Admin Panel</title>
 </head>
 <body>
 <header>
     <h3>WELOCME TO THE ADMIN PANEL!</h3>
-    <button class="btn btn-primary" id="logout">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
+    <button class="btn btn-primary" id="logout" onclick="goToPage('index.html')">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
 
 </header>
 
 
 <div class="card">
-    <i class='fas fa-edit'></i> <i class='fas fa-trash'></i>
+    <i class='fas fa-edit' onclick="show('block')"></i> <i class='fas fa-trash' onclick="deleteConfirm()"></i>
     <div class="card-body">
         <h5 class="card-title">Sensor name1</h5>
         <p class="card-text">Lora key: KEY</p>
@@ -40,7 +42,7 @@
 
 
 <div class="card">
-    <i class='fas fa-edit'></i> <i class='fas fa-trash'></i>
+    <i class='fas fa-edit' onclick="show('block')"></i> <i class='fas fa-trash' onclick="deleteConfirm()"></i>
     <div class="card-body">
         <h5 class="card-title">Sensor name2</h5>
         <p class="card-text">Lora key: KEY</p>
@@ -85,6 +87,27 @@
         <input type="submit" name="conversion" class="btn btn-primary" value="Submit">
     </div>
 </form>
+</div>
+
+<div id="gray" onclick="show('none')"></div>
+<div id="popUp">
+    <i class="fa fa-window-close" aria-hidden="true" onclick="show('none')"></i>
+    <h2>Sensor name1</h2>
+    <form>
+        <div class="form-group" id="popUp-formBlock">
+            <label>Lora key:</label>
+            <input type="text" class="form-control" placeholder="KEY">
+        </div>
+        <div class="form-group">
+            <label>Wallet:</label>
+            <input type="text" class="form-control" placeholder="FireFly wallet address">
+        </div>
+        <div class="form-group">
+            <label>Twitch stream URL:</label>
+            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 </body>
 </html>

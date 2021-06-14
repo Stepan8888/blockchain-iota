@@ -8,3 +8,23 @@ function rechangeItem() {
     document.getElementById("fireFly").style.color = '#FFFFFF';
     document.getElementById("trinityLogo").style.backgroundImage = "url(images/iota-miota-logo.png)";
 }// тут всё также. но наобарот. протсес происходящий про отводе курсора.
+
+function show(state) {
+    document.getElementById('popUp').style.display = state;
+    document.getElementById('gray').style.display = state;
+}
+
+function deleteConfirm() {
+    var txt;
+    if (confirm("Are you sure you want to remove the sensor?")) {
+        txt = "You pressed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    console.log(txt);
+    //TODO make a delete query
+}
+
+function goToPage(page) {
+    window.location = page;
+}
