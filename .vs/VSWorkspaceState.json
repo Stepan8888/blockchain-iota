@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\testfolder",
-    "\\webpage"
+    "\\webpage",
+    "\\webpage\\images"
   ],
   "SelectedNode": "\\webpage\\index.html",
   "PreviewInSolutionExplorer": false
