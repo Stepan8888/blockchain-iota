@@ -112,6 +112,8 @@ module.exports = {
     selectTransactions: selectTransactions,
     insertTransaction: insertTransaction,
     endConnection: endConnection,
+    deleteFromDb: deleteFromDb,
+    getReadingFromDb: getReadingFromDb,
 }
 
 // function selectQuery(outputId, callback) {
@@ -143,7 +145,7 @@ module.exports = {
 //     // return false;
 // }
 
-function deleteFromSensorsTable(lora_key) {
+const deleteFromDb = function deleteFromSensorsTable(lora_key) {
     var sql_query = `DELETE FROM sensors WHERE lora_key="${lora_key}"`;
     connectToDb.query(sql_query, function (err, result) {
         if (err) throw err;
@@ -151,7 +153,7 @@ function deleteFromSensorsTable(lora_key) {
     });
 };
 
-function getReading(sensor_id) {
+const getReadingFromDb = function getReading(sensor_id) {
     var sql_query = `SELECT energy_used FROM readings WHERE sensor_id="${sensor_id}"`;
     connectToDb.query(sql_query, function (err, result) {
         if (err) throw err;
