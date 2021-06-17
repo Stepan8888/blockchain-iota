@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-routes",
+      "appliesTo": "routes/routes.js",
+      "type": "launch"
+    }
+  ]
+}

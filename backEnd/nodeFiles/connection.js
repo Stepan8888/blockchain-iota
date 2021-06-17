@@ -1,3 +1,4 @@
+const { request } = require('https');
 const mysql = require('mysql');
 
 
@@ -15,6 +16,15 @@ const connectToDb = function connectToDatabase() {
     });
 }
 
+function login(form) {
+    var user = form.username.value;
+    var pass = form.password.value;
+    var sql_query = `SELECT * FROM users WHERE user_name ='${user}' AND password ='${pass}'`;
+    connectToDb.query(sql_query, function (err, result) {
+        if (err) throw err;
+    });
+
+}
 
 const selectTransactions = function findTransaction(transactonId) {
     return new Promise(function (resolve, reject) {
@@ -159,4 +169,14 @@ const getReadingFromDb = function getReading(sensor_id) {
         if (err) throw err;
         return result.fields;
     });
+}
+
+function getId() {
+    var id;
+    const query = "SELECT id FROM sensors";
+    connectToDb.query(query, [id], function (err, result) {
+        if (err) throw err;
+        var text = document.getElementsByClassName('card-title');
+        text.innerHTML = id;
+    }
 }
