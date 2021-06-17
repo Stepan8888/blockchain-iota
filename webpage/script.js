@@ -14,6 +14,11 @@ function show(state) {
     document.getElementById('gray').style.display = state;
 }
 
+function show2(state) {
+    document.getElementById('popUp2').style.display = state;
+    document.getElementById('gray2').style.display = state;
+}
+
 function deleteConfirm() {
     const deleteFromDatabase = require("../backEnd/nodeFiles/connection.js");
     var txt;
