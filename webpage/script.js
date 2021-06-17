@@ -15,9 +15,12 @@ function show(state) {
 }
 
 function deleteConfirm() {
+    const deleteFromDatabase = require("../backEnd/nodeFiles/connection.js");
     var txt;
+    var loraKey;
     if (confirm("Are you sure you want to remove the sensor?")) {
         txt = "You pressed OK!";
+        deleteFromDatabase.deleteFromDb(loraKey);
     } else {
         txt = "You pressed Cancel!";
     }
