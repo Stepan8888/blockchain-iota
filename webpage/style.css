@@ -9,6 +9,8 @@
     padding: 0;
 }
 
+
+
 body{
     height: 100%;
     background-color: darkblue;
@@ -40,7 +42,7 @@ position: fixed;
 
 table {
     width: 70%;
-    margin-left: 100px;
+    margin-left: 5.2%;
     font-family: 'Lato', sans-serif;
     color: white;
 
@@ -48,8 +50,8 @@ table {
 
 th {
     text-align: left;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 3%;
+    padding-bottom: 1.04%;
     font-size: 26px;
 }
 td{
@@ -104,7 +106,7 @@ td{
     display: inline-block;
     width: 230px;
     height: 100%;
-    margin-left: 90px;
+    margin-left: 9%;
 }
 
 #headsDiv{
@@ -128,35 +130,36 @@ td{
 
 #tstream {
 
-    width: 720px;
+    width: 75%;
     height: 480px;
     margin: 0 auto;
     margin-top: 100px;
     background-color: black;
 }
 #graphs{
-    margin-top: 150px;
-    margin-bottom: 600px;
+    margin-top: 7.9%;
+    
 
 }
 #graph1 {
-    width: 620px;
+    width: 40%;
     height: 380px;
     background-color: blue;
     float: left;
-    margin-left: 100px;
+    margin-left: 5.2%;
 }
 
 #graph2 {
-    width: 620px;
+    width: 40%;
     height: 380px;
     background-color: blue;
     float: right;
-    margin-right:100px;
+    margin-right:5.2%;
 
 }
 
 #links {
+    margin-top: 10%;
     border-top-style: solid;
     border-top-width: 5px;
     border-top-color: white;
@@ -181,8 +184,8 @@ td{
 #timerDiv{
 
     position: absolute;
-    margin-left: 35%;
-    width: 380px;
+    margin-left: 38%;
+    width: 22%;
     height: 130px;
     border: #FFFFFF solid 5px;
 
@@ -293,4 +296,50 @@ td{
 
 #popUp img{
     margin: 10px auto;
+}
+@media (max-width: 1000px) {
+    #block {
+        display: none;
+    }
+
+    #heads {
+        display: none;
+    }
+
+    #timer {
+        font-size: 26px;
+    }
+
+    #kph {
+        display: none;
+    }
+
+    #fireFly {
+        display: none;
+    }
+
+    #price {
+        display: none;
+    }
+
+    #tstream {
+        height: 280px;
+    }
+
+    #graph1{
+        height: 200px;
+
+    }
+
+    #graph2 {
+        height: 200px;
+    }
+    .logoLink{
+        height: 30px;
+        width: 30px;
+    }
+
+    th{
+        font-size: 16px;
+    }
 }
