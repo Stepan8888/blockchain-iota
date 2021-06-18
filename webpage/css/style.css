@@ -107,7 +107,7 @@ td{
     display: inline-block;
     width: 230px;
     height: 100%;
-    margin-left: 9%;
+    margin-left: 11%;
 }
 
 #headsDiv {
@@ -124,7 +124,7 @@ td{
     font-family: 'Antonio', sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 5.9vw;
+    font-size: 5vw;
     line-height: 90px;
 }
 
@@ -235,7 +235,7 @@ td{
     font-family: 'Lato', sans-serif;
     font-style: italic;
     font-weight: normal;
-    font-size: 2.4vw;
+    font-size: 1.9vw;
     line-height: 36px;
 
     color: #FFFFFF;
@@ -346,7 +346,7 @@ td{
     color: #D8DBE2;
 }
 
-#transaction {
+#transaction { 
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: bold;
