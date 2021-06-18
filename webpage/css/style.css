@@ -101,6 +101,7 @@ td{
 }
 
 #blockDiv{
+    
     position: relative;
     float: left;
     display: inline-block;
@@ -109,7 +110,8 @@ td{
     margin-left: 9%;
 }
 
-#headsDiv{
+#headsDiv {
+    
     position: relative;
     float: right;
     width: 230px;
@@ -117,15 +119,13 @@ td{
     margin-right: 80px;
 }
 
-.teamName{
+.teamName {
     position: absolute;
-
     font-family: 'Antonio', sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 90px;
+    font-size: 5.9vw;
     line-height: 90px;
-
 }
 
 #tstream {
@@ -170,30 +170,29 @@ td{
 }
 
 #block{
+    
     background: linear-gradient(90deg, #0085FF 0%, #00F4C8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-#heads{
+#heads {
+    
     background: linear-gradient(270deg, #0085FF 0%, #00F4C8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-#timerDiv{
-
+#timerDiv {
     position: absolute;
     margin-left: 38%;
     width: 22%;
     height: 130px;
     border: #FFFFFF solid 5px;
-
     font-family: 'Josefin Sans', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 96px;
-
+    font-size: 5.5vw;
     background: #000000;
 }
 
@@ -220,7 +219,7 @@ td{
     height: 130px;
 
     font-style: italic;
-    font-size: 22px;
+    font-size: 1.8vw;
     line-height: 135px;
 
     color: #00F4C8;
@@ -236,7 +235,7 @@ td{
     font-family: 'Lato', sans-serif;
     font-style: italic;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 2.4vw;
     line-height: 36px;
 
     color: #FFFFFF;
@@ -343,35 +342,23 @@ td{
     margin: 10px auto;
 }
 @media (max-width: 1000px) {
-    #blockDiv {
-        display: none;
-        position: static;
-        top: 150px;
-    }
-
-    #headsDiv {
-        display: none;
-        position: static;
-        top: 150px;
-    }
+   
 
     #timer {
-        font-size: 26px;
+        /*font-size: 26px;*/
     }
 
     #kph {
-        display: none;
+        /*display: none;*/
     }
 
-    #fireFly {
-        display: none;
-    }
+    
 
     #priceDiv {
         width: 11.9%;
         margin-right: 20%;
-        margin-top: 4%;
-        font-size: 20px;
+        margin-top: 3.2%;
+        font-size: 25px;
     }
 
     #price {
@@ -406,6 +393,25 @@ td{
     #popUp2 h3 {
         font-size: 10px;
     }
+   
+}
+@media (max-width: 1500px){
+    #blockDiv {
+        display: none;
+        position: static;
+        top: 150px;
+    }
 
-    
+    #headsDiv {
+        display: none;
+        position: static;
+        top: 150px;
+    }
+
+}
+
+@media (max-width: 650px) {
+    #fireFly {
+        display: none;
+    }
 }
