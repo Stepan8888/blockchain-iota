@@ -93,7 +93,9 @@ header h3{
     width: 100%;
     display: inline-flex;
 }
-
+#sensors{
+    overflow-x: scroll;
+}
 #gray{
     background-color: rgba(1, 1, 1, 0.3);
     position: fixed;
@@ -161,7 +163,7 @@ header h3{
         font-size: 18px;
     }
     #container {
-        width: 400px;
+        /*width: 400px;*/
         display: inline-block;
     }
 }
