@@ -12,91 +12,99 @@
 <body>
 
 
-<header>
-    <div id = "trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
-        <span id = "fireFly">FireFly</span>
-        <div id = "trinityLogo"></div>
-    </div>
-    <div id = "blockDiv">
-    <span class = "teamName" id = "block">BLOCK</span>
-    </div>
-
-    <div id = "timerDiv">
-        <div>
-        <span id = "timer">000.4</span>
-        <span id = "kph">Kph</span>
+    <header>
+        <div id="trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
+            <span id="fireFly">FireFly</span>
+            <div id="trinityLogo"></div>
         </div>
-    </div>
+        <div id="blockDiv">
+            <span class="teamName" id="block">BLOCK</span>
+        </div>
 
-    <div id = "priceDiv">
-        <span id = "price">0,004 FireFly/Kph</span>
-    </div>
+        <div id="timerDiv">
+            <div>
+                <span id="timer">000.4</span>
+                <span id="kph">Kph</span>
+            </div>
+        </div>
 
-    <div id = "headsDiv">
-    <span class = "teamName" id = "heads">HEADS</span>
-    </div>
+        <div id="priceDiv">
+            <span id="price">0,004 FireFly/Kph</span>
+        </div>
+
+        <div id="headsDiv">
+            <span class="teamName" id="heads">HEADS</span>
+        </div>
 
 
-</header>
+    </header>
 
-<main>
-    <div id="tstream">
-        
-    </div>
-    <div id="graphs">
-        <div id="graph1">
+    <main>
+        <div id="tstream">
 
         </div>
-        <div id="graph2">
+        <div id="graphs">
+            <div id="graph1">
 
+            </div>
+            <div id="graph2">
+
+            </div>
         </div>
+
+    </main>
+    <div id="links">
+        <table>
+            <tr>
+                <th><div onclick="show3('block')">Connect with:</div></th>
+                <th>Help:</th>
+                <th>Powered by:</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://discord.com"><img class="logoLink" src="images/discord.png" alt="" /></a>
+                    <a href="https://facebook.com"><img class="logoLink" src="images/facebook.png" alt="" /></a>
+                    <a href="https://instagram.com"><img class="logoLink" src="images/instagram.png" alt="" /></a>
+                    <a href="https://telegram.com"><img class="logoLink" src="images/telegram.png" alt="" /></a>
+                </td>
+                <td><div onclick="show2('block')"><a title="click">How does it work?</a></div></td>
+                <td><a>NHL Stenden</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>About us</td>
+                <td></td>
+
+            </tr>
+        </table>
+    </div>
+    <footer>
+        <span id="date">© 2021</span>
+    </footer>
+
+    <div id="gray" onclick="show('none')"></div>
+    <div id="gray2" onclick="show2('none')"></div>
+    <div id="gray3" onclick="show3('none')"></div>
+    <div id="popUp">
+        <h2><b>Donate</b></h2>
+        <img alt="donate QR code" src=images/qr_donate.png>
     </div>
 
-</main>
-<div id="links">
-    <table>
-        <tr>
-            <th>Connect with:</th>
-            <th>Help:</th>
-            <th>Powered by:</th>
-        </tr>
-        <tr>
-            <td>
-                <a href="discord.com"><img class="logoLink" src="images/discord.png" alt="" /></a>
-                <a href="facebook.com"><img class="logoLink" src="images/facebook.png" alt="" /></a>
-                <a href="instagram.com"><img class="logoLink" src="images/instagram.png" alt="" /></a>
-                <a href="telegram.com"><img class="logoLink" src="images/telegram.png" alt="" /></a>
-</td>
-            <td><div onclick="show2('block')">How does it work?</div></td>
-            <td>NHL Stenden</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>About us</td>
-            <td></td>
-
-        </tr>
-    </table>
-</div>
-<footer>
-    <span id = "date">© 2021</span>
-</footer>
-
-<div id="gray" onclick="show('none')"></div>
-<div id="gray2" onclick="show2('none')"></div>
-<div id="popUp">
-    <h2><b>Donate</b></h2>
-    <img alt = "donate QR code" src = images/qr_donate.png>
-</div>
-    
     <div id="popUp2">
         <h2><b>How does it work?</b></h2>
         <h3>
-            
+
             My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?
         </h3>
     </div>
- 
+
+    <div id="transactPopUp">
+        <h2><b>Incoming transaction</b></h2>
+        <div id="transaction">+1m </div>
+    </div>
+
+
+
 
 </body>
 

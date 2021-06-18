@@ -102,6 +102,11 @@ function show2(state) {
     document.getElementById('gray2').style.display = state;
 }
 
+function show3(state) {
+	document.getElementById('transactPopUp').style.display = state;
+	document.getElementById('gray3').style.display = state;
+}
+
 function deleteConfirm() {
     const deleteFromDatabase = require("../backEnd/nodeFiles/connection.js");
     var txt;

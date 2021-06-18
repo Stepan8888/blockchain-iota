@@ -279,7 +279,17 @@ td{
     z-index: 100;
     display: none;
 }
-#popUp{
+#gray3 {
+    background-color: rgba(1, 1, 1, 0.75);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+    #popUp{
     width: 280px;
     height: 280px;
     margin: auto;
@@ -311,6 +321,41 @@ td{
     display: none;
 }
 
+#transactPopUp {
+    width: 280px;
+    height: 280px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #212738;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+}
+
+#transactPopUp h2 {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+}
+
+#transaction {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+    color: yellow;
+    margin-top: 30%;
+}
 #popUp h2{
     font-family: 'Lato', sans-serif;
     font-style: normal;
