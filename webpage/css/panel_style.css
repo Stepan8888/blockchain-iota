@@ -24,7 +24,7 @@ header h3{
     user-select: none;
     font-style: normal;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 4.6vw;
     line-height: 60px;
 }
 
@@ -81,7 +81,9 @@ header h3{
     margin: 0 auto;
     width: 22rem;
 }
-
+.btn{
+    font-size: 24px;
+}
 .mb-3 .btn{
     display: block;
     margin: 10px auto 0;
@@ -157,5 +159,9 @@ header h3{
     }
     .form-control{
         font-size: 18px;
+    }
+    #container {
+        width: 400px;
+        display: inline-block;
     }
 }
