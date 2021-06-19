@@ -17,6 +17,10 @@ header *{
 }
 
 header h3{
+    padding-bottom: 4px;
+}
+
+header h3{
     background: linear-gradient(90deg, #0085FF 0%, #00F4C8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
