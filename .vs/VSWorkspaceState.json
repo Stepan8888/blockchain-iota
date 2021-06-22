@@ -3,8 +3,9 @@
     "",
     "\\testfolder",
     "\\webpage",
+    "\\webpage\\css",
     "\\webpage\\images"
   ],
-  "SelectedNode": "\\webpage\\script.js",
+  "SelectedNode": "\\info.php",
   "PreviewInSolutionExplorer": false
 }
