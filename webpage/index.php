@@ -22,6 +22,17 @@
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
         }
+
+        function getData($conn, $sensorId) {
+            $sql = "SELECT energy_used FROM readings WHERE sensor_id = ?";
+                $result = $conn -> query($sql);
+                $row = mysqli_fetch_array($result);
+                if ($result->num_rows > 0) {
+                // output data of each row
+                echo $row["energy_used"];
+                }
+                $conn->close();
+        }
     ?> 
 </head>
 
@@ -40,14 +51,7 @@
         <div id="timerDiv">
             <div>
                 <span id="timer"><?php 
-                $sql = "SELECT energy_used FROM readings";
-                $result = $conn -> query($sql);
-                $row = mysqli_fetch_array($result);
-                if ($result->num_rows > 0) {
-                // output data of each row
-                echo $row["energy_used"];
-                }
-                $conn->close();
+                getData($conn, 2);
                 ?></span>
                 <span id="kph">Kph</span>
             </div>
