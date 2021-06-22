@@ -74,6 +74,17 @@
     }
     $conn->close();
 ?>
+
+
+    <div class="card" id="addSensor" onclick="showAddSensor('block')">
+        <i class="icon-fixed-width"></i>
+        <div class="card-body">
+            <p class="card-text"><i class="fas fa-plus"></i></p>
+            <h5 class="card-title">Add sensor</h5>
+        </div>
+    </div>
+
+
 </div>
 <hr>
 
@@ -113,10 +124,36 @@
 </form>
 </div>
 
-<div id="gray" onclick="show('none')"></div>
+<div class="gray" id="gray" onclick="show('none')"></div>
+<div class="gray" id="grayAddSensor" onclick="showAddSensor('none')"></div>
 <div id="popUp">
     <i class="fa fa-window-close" aria-hidden="true" onclick="show('none')"></i>
     <h2>Sensor name1</h2>
+        <div class="form-group" id="popUp-formBlock">
+            <label>Lora key:</label>
+            <input type="text" class="form-control" placeholder="KEY">
+        </div>
+        <div class="form-group">
+            <label>Wallet:</label>
+            <input type="text" class="form-control" placeholder="FireFly wallet address">
+        </div>
+        <div class="form-group">
+            <label>Twitch stream URL:</label>
+            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div id="popUpAddSensor">
+    <i class="fa fa-window-close" aria-hidden="true" onclick="showAddSensor('none')"></i>
+
+    <h2>Add Sensor</h2>
+        <form>
+        <div class="form-group" id="popUp-formBlock">
+            <label>Sensor name:</label>
+            <input type="text" class="form-control" placeholder="Sensor name">
+        </div>
     <form>
         <div class="form-group" id="popUp-formBlock">
             <label>Lora key:</label>

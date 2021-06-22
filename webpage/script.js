@@ -99,12 +99,17 @@ function show(state) {
 
 function show2(state) {
     document.getElementById('popUp2').style.display = state;
-    document.getElementById('gray2').style.display = state;
+    document.getElementById('gray1').style.display = state;
 }
 
 function show3(state) {
 	document.getElementById('transactPopUp').style.display = state;
-	document.getElementById('gray3').style.display = state;
+	document.getElementById('gray2').style.display = state;
+}
+
+function showAddSensor(state) {
+	document.getElementById('popUpAddSensor').style.display = state;
+	document.getElementById('grayAddSensor').style.display = state;
 }
 
 function deleteConfirm() {
