@@ -20,26 +20,61 @@
     <script src=script.js></script>
     <script src=../backEnd/nodeFiles/connection.js></script>
     <title>Admin Panel</title>
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "iotamp_db";
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Check connection
+    if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+    }
+
+    function deleteFromDb($key) {
+        $query = "DELETE FROM sensors WHERE lora_key = ?";
+    }
+    ?>
 </head>
 <body>
 <header>
     <h3>WELCOME TO THE ADMIN PANEL!</h3>
-    <button class="btn btn-primary" id="logout" onclick="goToPage('index.html')">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
+    <button class="btn btn-primary" id="logout" onclick="goToPage('index.php')">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
 
 </header>
 
 <div id="sensors">
-<div class="card">
-    <i class='fas fa-edit' onclick="show('block')"></i> <i class='fas fa-trash' onclick="deleteConfirm()"></i>
-    <div class="card-body">
-        <h5 class="card-title">Sensor name1</h5>
-        <p class="card-text">Lora key: KEY</p>
-        <p class="card-text">Wallet: WALLET</p>
+<?php
+    $sql = "SELECT id, lora_key, wallet_address FROM sensors";
+    $result = $conn -> query($sql);
+
+    if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        ?>
+        <div class="card">
+        <i class="fas fa-edit" onclick="show('block')"></i> <i class="fas fa-trash" onclick="deleteConfirm()"></i>
+        <div class="card-body">
+        <?php
+        echo '<h5 class="card-title">Sensor name ' . $row["id"] . '</h5>';
+        echo '<p class="card-text">Lora key: ' . $row["lora_key"] . '</p>';
+        echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
+        ?>
         <p class="card-text">Twitch stream URL: URL</p>
         <button class="btn btn-primary">View graph</button>
-    </div>
+        </div>
+        </div>
+        <?php
+    }
+    } else {
+    echo "0 results";
+    }
+    $conn->close();
+?>
 </div>
-    </div>
 <hr>
 
 <h3 id="settings"><i class="fas fa-cogs"></i> Settings:</h3>

@@ -7,6 +7,21 @@
     <script src = script.js></script>
     <title>IOTA Project</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "iotamp_db";
+
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Check connection
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        }
+    ?> 
 </head>
 
 <body>
@@ -23,7 +38,16 @@
 
         <div id="timerDiv">
             <div>
-                <span id="timer">000.4</span>
+                <span id="timer"><?php 
+                $sql = "SELECT energy_used FROM readings";
+                $result = $conn -> query($sql);
+                $row = mysqli_fetch_array($result);
+                if ($result->num_rows > 0) {
+                // output data of each row
+                echo $row["energy_used"];
+                }
+                $conn->close();
+                ?></span>
                 <span id="kph">Kph</span>
             </div>
         </div>
