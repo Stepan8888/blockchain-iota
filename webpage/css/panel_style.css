@@ -63,6 +63,25 @@ header h3{
     color: #ff1e25;
 }
 
+.fa-plus{
+    cursor: pointer;
+    color: #999599;
+    font-size: 150px;
+}
+
+.icon-fixed-width{
+    margin: 30px 0 20px;
+}
+
+#addSensor .card-text, .card-title{
+    text-align: center;
+    cursor: pointer;
+}
+
+#addSensor .card-text{
+    margin-bottom:0;
+}
+
 .card{
     display: inline-flex;
     width: 22rem;
@@ -74,6 +93,12 @@ header h3{
     text-align: center;
     margin-bottom: 15px;
     font-size: 24px;
+}
+
+.card-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-body button{
@@ -100,7 +125,7 @@ header h3{
 #sensors{
     overflow-x: scroll;
 }
-#gray{
+.gray{
     background-color: rgba(1, 1, 1, 0.3);
     position: fixed;
     left: 0;
@@ -113,6 +138,22 @@ header h3{
 #popUp{
     width: 400px;
     height: 400px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #D8DBE2;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+}
+
+#popUpAddSensor{
+    width: 400px;
+    height: 480px;
     margin: auto;
     position: fixed;
     left: 0;
@@ -152,7 +193,10 @@ header h3{
         font-size: 34px;
     }
     .card-text{
+        white-space: nowrap;
         font-size: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .btn{
         font-size: 24px;

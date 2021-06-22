@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <script src = script.js></script>
+    <script src = "script.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <title>IOTA Project</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "iotamp_db";
+
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Check connection
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        }
+
+        function getData($conn, $sensorId) {
+            $sql = "SELECT energy_used FROM readings WHERE sensor_id = ?";
+                $result = $conn -> query($sql);
+                $row = mysqli_fetch_array($result);
+                if ($result->num_rows > 0) {
+                // output data of each row
+                echo $row["energy_used"];
+                }
+                $conn->close();
+        }
+    ?> 
 </head>
 
 <body>
@@ -23,7 +50,9 @@
 
         <div id="timerDiv">
             <div>
-                <span id="timer">000.4</span>
+                <span id="timer"><?php 
+                getData($conn, 2);
+                ?></span>
                 <span id="kph">Kph</span>
             </div>
         </div>
@@ -41,6 +70,17 @@
 
     <main>
         <div id="tstream">
+            <script type="text/javascript">
+                  new Twitch.Embed("tstream", {
+                    width: "100%",
+                    height: "100%",
+                    channel: "iotamp",
+                    autoplay: "true",
+                    allowfullscreen: "true",
+                    theme: "dark"
+                  });
+                </script>
+
 
         </div>
         <div id="graphs">

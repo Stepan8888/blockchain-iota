@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+/*var mysql = require('mysql');
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -80,7 +80,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "X34G8gjNabFkcq",
     database: "iotamp_db"
-});
+});*/
 function changeItem() {
     document.getElementById("fireFly").style.color = '#00F4C8';
     document.getElementById("trinityLogo").style.backgroundImage = "url(images/iota-miota-logo-blue.png)";
@@ -99,12 +99,17 @@ function show(state) {
 
 function show2(state) {
     document.getElementById('popUp2').style.display = state;
-    document.getElementById('gray2').style.display = state;
+    document.getElementById('gray1').style.display = state;
 }
 
 function show3(state) {
 	document.getElementById('transactPopUp').style.display = state;
-	document.getElementById('gray3').style.display = state;
+	document.getElementById('gray2').style.display = state;
+}
+
+function showAddSensor(state) {
+	document.getElementById('popUpAddSensor').style.display = state;
+	document.getElementById('grayAddSensor').style.display = state;
 }
 
 function deleteConfirm() {
