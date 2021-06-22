@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <script src = script.js></script>
+    <script src = "script.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <title>IOTA Project</title>
     <link rel="stylesheet" href="css/style.css">
 
@@ -65,6 +66,17 @@
 
     <main>
         <div id="tstream">
+            <script type="text/javascript">
+                  new Twitch.Embed("tstream", {
+                    width: "100%",
+                    height: "100%",
+                    channel: "iotamp",
+                    autoplay: "true",
+                    allowfullscreen: "true",
+                    theme: "dark"
+                  });
+                </script>
+
 
         </div>
         <div id="graphs">
