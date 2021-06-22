@@ -23,8 +23,8 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-        function getData($conn, $sensorId) {
-            $sql = "SELECT energy_used FROM readings WHERE sensor_id = ?";
+        function getData($conn) {
+            $sql = "SELECT energy_used FROM readings";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {

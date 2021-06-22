@@ -23,7 +23,7 @@
     <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "X34G8gjNabFkcq";
     $dbname = "iotamp_db";
 
     // Create connection
