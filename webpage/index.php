@@ -25,12 +25,11 @@
 
         function getData($conn) {
             $sql = "SELECT SUM(energy_used) FROM readings";
-            $totalEnergy = 0;
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo $result;
+                echo $row;
                 }
                 $conn->close();
         }
