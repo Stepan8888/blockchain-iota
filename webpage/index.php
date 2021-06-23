@@ -24,7 +24,7 @@
         }
 
         function getData($conn) {
-            $sql = "SELECT SUM(energy_used) AS Total FROM readings";
+            $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {
