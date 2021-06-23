@@ -122,8 +122,8 @@ module.exports = {
     selectTransactions: selectTransactions,
     insertTransaction: insertTransaction,
     endConnection: endConnection,
-    deleteFromDb: deleteFromDb,
-    getReadingFromDb: getReadingFromDb,
+    // deleteFromDb: deleteFromDb,
+    // getReadingFromDb: getReadingFromDb,
 }
 
 // function selectQuery(outputId, callback) {
