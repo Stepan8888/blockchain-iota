@@ -50,8 +50,8 @@
             $walletAddress = htmlentities($_POST['walletAddress']);
             $twitchStream = htmlentities($_POST['twitchStream']);
             $sensorName = htmlentities($_POST['sensorName']);
-            $sql = "INSERT INTO sensors (lora_key, wallet_address) VALUES (?, ?)";
-            $stmt->bind_param('ss', $loraKey, $walletAddress);
+            $sql = "INSERT INTO sensors (sensor_name, lora_key, wallet_address, twitch) VALUES (?, ?, ?, ?)";
+            $stmt->bind_param('ssss',$sensorName, $loraKey, $walletAddress, $twitchStream);
             $stmt->execute();
             $stmt->close();
         }
@@ -104,9 +104,7 @@
         </div>
         </div>
         <?php
-    }
-    } else {
-    echo "0 results";
+        }
     }
     $conn->close();
 ?>
