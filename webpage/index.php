@@ -24,12 +24,12 @@
         }
 
         function getData($conn) {
-            $sql = "SELECT SUM(energy_used) FROM readings";
+            $sql = "SELECT SUM(energy_used) AS Total FROM readings";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo $row['energy_used'];
+                echo $row["Total"];
                 }
                 $conn->close();
         }
