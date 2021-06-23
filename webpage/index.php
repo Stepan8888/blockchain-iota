@@ -76,10 +76,11 @@
                   new Twitch.Embed("tstream", {
                     width: "100%",
                     height: "100%",
-                    channel: "iotamp",
+                    channel: "tebtvru",
                     autoplay: "true",
                     allowfullscreen: "true",
-                    theme: "dark"
+                    theme: "dark",
+                    parent: ["161.97.174.241/webpage/index.php"]
                   });
                 </script>
 
