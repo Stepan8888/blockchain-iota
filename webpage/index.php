@@ -29,7 +29,7 @@
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo $row;
+                echo $row['energy_used'];
                 }
                 $conn->close();
         }
