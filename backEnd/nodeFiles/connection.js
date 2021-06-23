@@ -155,28 +155,28 @@ module.exports = {
 //     // return false;
 // }
 
-const deleteFromDb = function deleteFromSensorsTable(lora_key) {
-    var sql_query = `DELETE FROM sensors WHERE lora_key="${lora_key}"`;
-    connectToDb.query(sql_query, function (err, result) {
-        if (err) throw err;
-        return "Deleted: " + result.rows;
-    });
-};
-
-const getReadingFromDb = function getReading(sensor_id) {
-    var sql_query = `SELECT energy_used FROM readings WHERE sensor_id="${sensor_id}"`;
-    connectToDb.query(sql_query, function (err, result) {
-        if (err) throw err;
-        return result.fields;
-    });
-}
-
-function getId() {
-    var id;
-    const query = "SELECT id FROM sensors";
-    connectToDb.query(query, [id], function (err, result) {
-        if (err) throw err;
-        var text = document.getElementsByClassName('card-title');
-        text.innerHTML = id;
-    }
-}
+// const deleteFromDb = function deleteFromSensorsTable(lora_key) {
+//     var sql_query = `DELETE FROM sensors WHERE lora_key="${lora_key}"`;
+//     connectToDb.query(sql_query, function (err, result) {
+//         if (err) throw err;
+//         return "Deleted: " + result.rows;
+//     });
+// };
+//
+// const getReadingFromDb = function getReading(sensor_id) {
+//     var sql_query = `SELECT energy_used FROM readings WHERE sensor_id="${sensor_id}"`;
+//     connectToDb.query(sql_query, function (err, result) {
+//         if (err) throw err;
+//         return result.fields;
+//     });
+// }
+//
+// function getId() {
+//     var id;
+//     const query = "SELECT id FROM sensors";
+//     connectToDb.query(query, [id], function (err, result) {
+//         if (err) throw err;
+//         var text = document.getElementsByClassName('card-title');
+//         text.innerHTML = id;
+//     }
+// }
