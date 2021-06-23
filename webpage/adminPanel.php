@@ -21,6 +21,9 @@
     <script src=../backEnd/nodeFiles/connection.js></script>
     <title>Admin Panel</title>
     <?php
+
+    session_start();
+
     $servername = "localhost";
     $username = "root";
     $password = "X34G8gjNabFkcq";
@@ -35,8 +38,41 @@
     }
 
     function deleteFromDb($key) {
+        $key = htmlentities($_GET['lora_key']);
         $query = "DELETE FROM sensors WHERE lora_key = ?";
+        $stmt->bind_param('s', $key);
+        $stmt->execute();
+        $stmt->close();
     }
+
+    function createSensor($conn, $sensorName, $loraKey, $walletAddress, $twitchStream) {
+            $loraKey = htmlentities($_POST['lora_key']);
+            $walletAddress = htmlentities($_POST['walletAddress']);
+            $twitchStream = htmlentities($_POST['twitchStream']);
+            $sensorName = htmlentities($_POST['sensorName']);
+            $sql = "INSERT INTO sensors (lora_key, wallet_address) VALUES (?, ?)";
+            $stmt->bind_param('ss', $loraKey, $walletAddress);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        function changeUsername($conn, $user) {
+            $currentUser = $_SESSION('username');
+            $user = htmlentities($_POST['username']);
+            $sql = "UPDATE users SET user_name = ? WHERE user_name = ?";
+            $stmt->bind_param('ss', $user, $currentUser);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        function changePassword($conn, $user, $pass) {
+            $user = $_SESSION('username');
+            $pass = htmlentities($_POST['password']);
+            $sql = "UPDATE users SET password = ? WHERE user_name = ?";
+            $stmt->bind_param('ss', $pass, $user);
+            $stmt->execute();
+            $stmt->close();
+        }
     ?>
 </head>
 <body>
