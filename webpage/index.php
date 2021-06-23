@@ -53,7 +53,7 @@
         <div id="timerDiv">
             <div>
                 <span id="timer"><?php 
-                getData($conn, 2);
+                getData($conn);
                 ?></span>
                 <span id="kph">Kph</span>
             </div>
