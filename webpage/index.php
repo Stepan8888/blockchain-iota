@@ -78,7 +78,7 @@
                     autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
-                    parent: ["161.97.174.241/webpage","streamernews.example.com","embeds.example.com"]
+                    parent: ["localhost"]
                   });
                 </script>
 
