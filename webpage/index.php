@@ -74,23 +74,17 @@
                   new Twitch.Embed("tstream", {
                     width: "100%",
                     height: "100%",
-                    channel: "tebtvru",
+                    channel: "iotamp",
                     autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
                     parent: ["localhost"]
+                    // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
+                    //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
                 </script>
 
 
-        </div>
-        <div id="graphs">
-            <div id="graph1">
-
-            </div>
-            <div id="graph2">
-
-            </div>
         </div>
 
     </main>

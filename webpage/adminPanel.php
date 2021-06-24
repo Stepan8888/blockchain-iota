@@ -100,7 +100,6 @@
         echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
         ?>
         <p class="card-text">Twitch stream URL: URL</p>
-        <button class="btn btn-primary">View graph</button>
         </div>
         </div>
         <?php
@@ -131,14 +130,6 @@
         <input type="submit" name="conversion" class="btn btn-primary" value="Submit">
     </div>
 
-</form>
-
-<form>
-    <div class="mb-3">
-        <label class="form-label">Change Main Wallet:</label>
-        <input type="text" name="conversion" class="form-control" placeholder="Wallet">
-        <input type="submit" name="conversion" class="btn btn-primary" value="Submit">
-    </div>
 </form>
 
 <form>
