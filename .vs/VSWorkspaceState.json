@@ -1,11 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.idea",
+    "\\backEnd",
+    "\\backEnd\\nodeFiles",
     "\\testfolder",
     "\\webpage",
     "\\webpage\\css",
-    "\\webpage\\images"
+    "\\webpage\\images",
+    "\\webpage\\routes"
   ],
-  "SelectedNode": "\\info.php",
+  "SelectedNode": "\\webpage\\index.php",
   "PreviewInSolutionExplorer": false
 }

@@ -12,7 +12,7 @@
     <?php
         $servername = "localhost";
         $username = "root";
-        $password = "";
+        $password = "X34G8gjNabFkcq";
         $dbname = "iotamp_db";
 
         // Create connection
@@ -107,7 +107,7 @@
                     <a href="https://instagram.com"><img class="logoLink" src="images/instagram.png" alt="" /></a>
                     <a href="https://telegram.com"><img class="logoLink" src="images/telegram.png" alt="" /></a>
                 </td>
-                <td><div onclick="show2('block')"><a title="click">How does it work?</a></div></td>
+                <td><div id="click" onclick="show2('block')"><a title="click">How does it work?</a></div></td>
                 <td><a>NHL Stenden</a></td>
             </tr>
             <tr>

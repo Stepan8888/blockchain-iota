@@ -258,6 +258,10 @@ td{
     color: #FFFFFF;
 }
 
+#click {
+    cursor: pointer;
+}
+
 #gray{
     background-color: rgba(1, 1, 1, 0.75);
     position: fixed;
