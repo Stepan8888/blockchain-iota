@@ -23,13 +23,13 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-        function getData($conn, $sensorId) {
-            $sql = "SELECT energy_used FROM readings WHERE sensor_id = ?";
+        function getData($conn) {
+            $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo $row["energy_used"];
+                echo $row["Total"];
                 }
                 $conn->close();
         }
@@ -51,7 +51,7 @@
         <div id="timerDiv">
             <div>
                 <span id="timer"><?php 
-                getData($conn, 2);
+                getData($conn);
                 ?></span>
                 <span id="kph">Kph</span>
             </div>
@@ -74,10 +74,11 @@
                   new Twitch.Embed("tstream", {
                     width: "100%",
                     height: "100%",
-                    channel: "iotamp",
+                    channel: "tebtvru",
                     autoplay: "true",
                     allowfullscreen: "true",
-                    theme: "dark"
+                    theme: "dark",
+                    parent: ["161.97.174.241/webpage/index.php"]
                   });
                 </script>
 
