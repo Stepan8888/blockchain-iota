@@ -136,7 +136,7 @@
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $sql ="SELECT wallet_address FROM sensors";
+        $sql ="SELECT wallet_address, id FROM sensors";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         if ($result->num_rows > 0) {
@@ -144,6 +144,7 @@
              while($row = $result -> fetch_assoc()) {
                 //echo '<b>Wallet #'. $counter.'</b>';
                 echo $row["wallet_address"];
+                echo $row["id"];
                 //$counter++;
                 echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . $row["wallet_address"] . '">';
             }
