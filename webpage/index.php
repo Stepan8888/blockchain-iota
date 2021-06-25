@@ -34,7 +34,7 @@
                 $conn->close();
         }
 
-        function getAdress($conn) {
+        function getWallet($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_array($result);
