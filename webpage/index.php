@@ -79,8 +79,8 @@
                     channel: "iotamp",
                     autoplay: "true",
                     allowfullscreen: "true",
-                    theme: "dark",
-                    parent: ["161.97.174.241/webpage/index.php"]
+                    theme: "dark"
+                    // parent: ["localhost"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
@@ -122,7 +122,7 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=djV11Xbc914">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=djV11Xbc914>
     </div>
 
     <div id="popUp2">
