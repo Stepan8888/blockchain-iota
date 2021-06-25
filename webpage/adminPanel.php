@@ -40,8 +40,10 @@
     function deleteFromDb($key) {
         $key = htmlentities($_GET['lora_key']);
         $query = "DELETE FROM sensors WHERE lora_key = ?";
-        $stmt->bind_param('s', $key);
-        $stmt->execute();
+        if(mysqli_query($conn, $sql)){
+            $stmt->bind_param('s', $key);
+            $stmt->execute();
+        }
         $stmt->close();
     }
 
@@ -51,8 +53,10 @@
             $twitchStream = htmlentities($_POST['twitchStream']);
             $sensorName = htmlentities($_POST['sensorName']);
             $sql = "INSERT INTO sensors (sensor_name, lora_key, wallet_address, twitch) VALUES (?, ?, ?, ?)";
-            $stmt->bind_param('ssss',$sensorName, $loraKey, $walletAddress, $twitchStream);
-            $stmt->execute();
+            if(mysqli_query($conn, $sql)){
+                $stmt->bind_param('ssss',$sensorName, $loraKey, $walletAddress, $twitchStream);
+                $stmt->execute();
+            }
             $stmt->close();
         }
 
@@ -60,8 +64,10 @@
             $currentUser = $_SESSION('username');
             $user = htmlentities($_POST['username']);
             $sql = "UPDATE users SET user_name = ? WHERE user_name = ?";
-            $stmt->bind_param('ss', $user, $currentUser);
-            $stmt->execute();
+            if(mysqli_query($conn, $sql)){
+                $stmt->bind_param('ss', $user, $currentUser);
+                $stmt->execute();
+            }
             $stmt->close();
         }
 
@@ -69,8 +75,10 @@
             $user = $_SESSION('username');
             $pass = htmlentities($_POST['password']);
             $sql = "UPDATE users SET password = ? WHERE user_name = ?";
-            $stmt->bind_param('ss', $pass, $user);
-            $stmt->execute();
+            if(mysqli_query($conn, $sql)){
+                $stmt->bind_param('ss', $pass, $user);
+                $stmt->execute();
+            }
             $stmt->close();
         }
     ?>
