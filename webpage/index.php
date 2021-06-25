@@ -23,13 +23,13 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-       /* function getWallets($conn){
+        function getWallets($conn){
              $sql ="SELECT s.wallet_address FROM sensors s WHERE s.id=1";
              $result = $conn -> query($sql);
              $row = $result ->fetch_assoc();
              echo $row["wallet_address"];
              $conn->close();
-		}*/
+		}
 
         function getData($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
