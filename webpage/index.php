@@ -120,7 +120,7 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img src="https://qrickit.com/api/qr.php?d=https://www.youtube.com/watch?v=dQw4w9WgXcQ&addtext=Donate&qrsize=200&t=p&e=m">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youtube.com/watch?v=djV11Xbc914">
     </div>
 
     <div id="popUp2">
