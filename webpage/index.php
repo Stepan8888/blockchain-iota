@@ -138,6 +138,13 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "X34G8gjNabFkcq";
+        $dbname = "iotamp_db";
+
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
         getWallets($conn);
         ?>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=djV11Xbc914">
