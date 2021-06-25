@@ -23,12 +23,12 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-       /* function getWallets($conn){
+        function getWallets($conn){
              $sql ="SELECT s.wallet_address FROM sensors s WHERE s.id=1";
              $result = $conn -> query($sql);
              echo $result;
              $conn->close();
-		}*/
+		}
 
         function getData($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
@@ -133,6 +133,7 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
+        <?php getWallets($conn); ?>
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=djV11Xbc914">
     </div>
 
