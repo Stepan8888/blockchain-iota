@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <script src = "script.js"></script>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <!-- <script src="https://embed.twitch.tv/embed/v1.js"></script> -->
     <title>IOTA Project</title>
     <link rel="stylesheet" href="css/style.css">
 
@@ -77,7 +77,7 @@
 
     <main>
     <iframe
-        src="https://player.twitch.tv/?channel=iotamp&parent=http://vmi566217.contaboserver.net/webpage/index.php"
+        src="https://player.twitch.tv/?channel=iotamp&amp;parent=http://vmi566217.contaboserver.net"
         height="720"
         width="1280"
         allowfullscreen="true">
