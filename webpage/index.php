@@ -26,7 +26,8 @@
         function getWallets($conn){
              $sql ="SELECT s.wallet_address FROM sensors s WHERE s.id=1";
              $result = $conn -> query($sql);
-             echo $result;
+             $row = $result ->fetch_assoc();
+             echo $row["wallet_address"]
              $conn->close();
 		}
 
