@@ -120,20 +120,30 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <script>const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://qrcodeutils.p.rapidapi.com/qrcodefree?text=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&size=150&type=svg&level=M",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "38baadfb95msh40e1848ab42b36fp15e0aajsn57b0152eb27f",
-		"x-rapidapi-host": "qrcodeutils.p.rapidapi.com"
-	}
-};
+       <?php
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});</script>
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$request->setRequestUrl('https://qrcodeutils.p.rapidapi.com/qrcodefree');
+$request->setRequestMethod('GET');
+$request->setQuery(new http\QueryString([
+	'text' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+	'size' => '150',
+	'type' => 'svg',
+	'level' => 'M'
+]));
+
+$request->setHeaders([
+	'x-rapidapi-key' => '38baadfb95msh40e1848ab42b36fp15e0aajsn57b0152eb27f',
+	'x-rapidapi-host' => 'qrcodeutils.p.rapidapi.com'
+]);
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+
+echo $response->getBody();
+?>
     </div>
 
     <div id="popUp2">
