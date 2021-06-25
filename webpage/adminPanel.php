@@ -78,10 +78,9 @@
 <body>
 <header>
     <h3>WELCOME TO THE ADMIN PANEL!</h3>
-    <button class="btn btn-primary" id="logout" onclick="goToPage('index.php')">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
+    <button class="btn btn-primary" id="logout" onclick="goToPage('logout.php')" name>Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
 
 </header>
-
 <div id="sensors">
 <?php
     $sql = "SELECT id, lora_key, wallet_address FROM sensors";
@@ -100,7 +99,6 @@
         echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
         ?>
         <p class="card-text">Twitch stream URL: URL</p>
-        <button class="btn btn-primary">View graph</button>
         </div>
         </div>
         <?php
@@ -131,14 +129,6 @@
         <input type="submit" name="conversion" class="btn btn-primary" value="Submit">
     </div>
 
-</form>
-
-<form>
-    <div class="mb-3">
-        <label class="form-label">Change Main Wallet:</label>
-        <input type="text" name="conversion" class="form-control" placeholder="Wallet">
-        <input type="submit" name="conversion" class="btn btn-primary" value="Submit">
-    </div>
 </form>
 
 <form>

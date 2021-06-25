@@ -26,14 +26,12 @@ header{
 }
 
 main{
-    padding-top: 90px;
-    height: 100%;
+    padding-top: 60px;
+    height: 100vh;
 
 }
 
 footer{
-position: fixed;
-    bottom: 0;
     width: 100%;
     height: 40px;
 
@@ -131,43 +129,20 @@ td{
 
 #tstream {
 
-    width: 75%;
-    height: 480px;
+    width: 85%;
+    height: 550px;
     margin: 0 auto;
     margin-top: 100px;
     background-color: black;
 }
-#graphs{
-    margin-top: 7.9%;
-    
-
-}
-#graph1 {
-    width: 40%;
-    height: 380px;
-    background-color: blue;
-    float: left;
-    margin-left: 5.2%;
-}
-
-#graph2 {
-    width: 40%;
-    height: 380px;
-    background-color: blue;
-    float: right;
-    margin-right:5.2%;
-
-}
 
 #links {
-    margin-top: 10%;
     border-top-style: solid;
     border-top-width: 5px;
     border-top-color: white;
     width: 100%;
     background-color: #191919;
     height: 220px;
-    float: left;
 }
 
 #block{
