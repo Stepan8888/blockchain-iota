@@ -23,12 +23,7 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-        function getWallets($conn){
-             $sql =SELECT s.wallet_address FROM sensors s WHERE s.id="1"";
-             $result = $conn -> query($sql);
-             echo $result;
-             $conn->close();
-		}
+      
 
         function getData($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
@@ -44,7 +39,7 @@
 </head>
 
 <body>
-    
+
 
     <header>
         <div id="trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
