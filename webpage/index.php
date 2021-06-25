@@ -23,16 +23,6 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-        function getWallets($conn){
-             $sql ="SELECT wallet_address FROM sensors  WHERE id=1";
-             $result = mysqli_query($conn, $sql);
-             $row = mysqli_fetch_array($result);
-             if ($result->num_rows > 0) {
-             echo $row["wallet_address"];
-             }
-             $conn->close();
-		}
-
         function getData($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
                 $result = mysqli_query($conn, $sql);
@@ -155,6 +145,7 @@
                 echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=' . $row["wallet_address"] . '">';
             }
         }
+        $conn -> close();
         ?>
     </div>
 
