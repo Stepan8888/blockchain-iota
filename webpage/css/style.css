@@ -25,11 +25,9 @@ header{
     background: #000000;
 }
 
-main {
+main{
     padding-top: 60px;
-    height: 90%;
-    margin-bottom: 10%;
-}
+    height: 100vh;
 
 }
 
