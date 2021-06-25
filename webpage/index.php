@@ -138,7 +138,7 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?php
+        <?php
         $servername = "localhost";
         $username = "root";
         $password = "X34G8gjNabFkcq";
@@ -146,8 +146,16 @@
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        getWallets($conn);
-        ?>">
+        $sql ="SELECT wallet_address FROM sensors";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        if ($result->num_rows > 0) {
+             while($row = $result -> fetch_assoc()) {
+                echo $row["wallet_address"];
+                echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=' . $row["wallet_address"] . '">';
+            }
+        }
+        ?>
     </div>
 
     <div id="popUp2">
