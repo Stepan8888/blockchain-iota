@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    
+
 
     <header>
         <div id="trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
