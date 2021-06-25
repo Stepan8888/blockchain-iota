@@ -131,7 +131,9 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?php">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?php 
+                getWallet($conn);
+                ?>>
     </div>
 
     <div id="popUp2">
