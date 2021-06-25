@@ -128,7 +128,20 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img alt="donate QR code" src=images/qr_donate.png>
+        <script>const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://qrcodeutils.p.rapidapi.com/qrcodefree?text=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&size=150&type=svg&level=M",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "38baadfb95msh40e1848ab42b36fp15e0aajsn57b0152eb27f",
+		"x-rapidapi-host": "qrcodeutils.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});</script>
     </div>
 
     <div id="popUp2">
