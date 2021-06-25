@@ -130,7 +130,7 @@ $request->setRequestMethod('GET');
 $request->setQuery(new http\QueryString([
 	'text' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 	'size' => '150',
-	'type' => 'svg',
+	'type' => 'png',
 	'level' => 'M'
 ]));
 
