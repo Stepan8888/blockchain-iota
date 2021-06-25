@@ -77,7 +77,7 @@
 
     <main>
     <iframe
-        src="https://player.twitch.tv/?channel=iotamp&parent=http://vmi566217.contaboserver.net/webpage/index.php"
+        src="https://player.twitch.tv/?channel=iotamp&parent=http://161.97.174.241/webpage/index.php"
         height="720"
         width="1280"
         allowfullscreen="true">
