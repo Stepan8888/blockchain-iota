@@ -78,10 +78,9 @@
 <body>
 <header>
     <h3>WELCOME TO THE ADMIN PANEL!</h3>
-    <button class="btn btn-primary" id="logout" onclick="goToPage('index.php')">Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
+    <button class="btn btn-primary" id="logout" onclick="goToPage('logout.php')" name>Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
 
 </header>
-
 <div id="sensors">
 <?php
     $sql = "SELECT id, lora_key, wallet_address FROM sensors";

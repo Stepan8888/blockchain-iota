@@ -83,8 +83,6 @@
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
                 </script>
-
-
         </div>
 
     </main>
