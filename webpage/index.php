@@ -23,12 +23,7 @@
         die("Connection failed: " . mysqli_connect_error());
         }
 
-       function getWallet($conn) {
-            $sql = "SELECT s.wallet_address FROM sensors s WHERE s.id="1" ";
-            $result = $conn -> query($sql);
-            echo $result;
-            $conn->close();
-	   }
+      
 
         function getData($conn) {
             $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
@@ -84,8 +79,8 @@
                     channel: "iotamp",
                     autoplay: "true",
                     allowfullscreen: "true",
-                    theme: "dark",
-                    parent: ["localhost"]
+                    theme: "dark"
+                    //parent: ["localhost"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
@@ -127,7 +122,7 @@
     <div id="gray3" onclick="show3('none')"></div>
     <div id="popUp">
         <h2><b>Donate</b></h2>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=<?php getWallet($conn); ?>">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=djV11Xbc914">
     </div>
 
     <div id="popUp2">
