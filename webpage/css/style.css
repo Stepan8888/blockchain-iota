@@ -271,7 +271,7 @@ td{
     z-index: 100;
     display: none;
 }
-    #popUp{
+#popUp {
     width: 280px;
     height: 280px;
     margin: auto;
@@ -285,6 +285,7 @@ td{
     border-radius: 10px;
     z-index: 150;
     display: none;
+    overflow-x: scroll;
 }
 
 #popUp2 {
