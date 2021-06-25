@@ -142,7 +142,7 @@
         if ($result->num_rows > 0) {
             $counter = 1
              while($row = $result -> fetch_assoc()) {
-                echo '<b>Wallet #'. $counter.'</b>';
+                //echo '<b>Wallet #'. $counter.'</b>';
                 echo $row["wallet_address"];
                 $counter++;
                 echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . $row["wallet_address"] . '">';
