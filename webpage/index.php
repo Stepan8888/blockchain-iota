@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <script src = "script.js"></script>
-    <!-- <script src="https://embed.twitch.tv/embed/v1.js"></script> -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <title>IOTA Project</title>
     <link rel="stylesheet" href="css/style.css">
 
@@ -76,13 +76,15 @@
     </header>
 
     <main>
-    <iframe
-        src="https://player.twitch.tv/?channel=iotamp&amp;parent=http://vmi566217.contaboserver.net/webpage/index.php"
+    <!-- <iframe
+        src="https://player.twitch.tv/?channel=iotamp&amp;parent=vmi566217.contaboserver.net/webpage/index.php"
         height="720"
         width="1280"
         allowfullscreen="true">
     </iframe>
-        <!-- <div id="tstream">
+    www.blockchainnhlstenden.com
+    161.97.174.241 -->
+        <div id="tstream">
             <script type="text/javascript">
                   new Twitch.Embed("tstream", {
                     width: "100%",
@@ -90,13 +92,13 @@
                     channel: "iotamp",
                     autoplay: "true",
                     allowfullscreen: "true",
-                    theme: "dark"
-                    //parent: ["localhost"]
+                    theme: "dark",
+                    parent: ["localhost"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
                 </script>
-        </div> -->
+        </div>
 
     </main>
     <div id="links">
