@@ -12,7 +12,7 @@
     <?php
         $servername = "localhost";
         $username = "root";
-        $password = "X34G8gjNabFkcq";
+        $password = "";
         $dbname = "iotamp_db";
 
         // Create connection
@@ -80,7 +80,7 @@
                     autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
-                    parent: ["161.97.174.241/webpage/index.php"]
+                    parent: ["localhost"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
