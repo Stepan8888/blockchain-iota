@@ -24,7 +24,7 @@
         }
 
         function getWallets($conn){
-             $sql =SELECT s.wallet_address FROM sensors s WHERE s.id="1"";
+             $sql ="SELECT s.wallet_address FROM sensors s WHERE s.id=1";
              $result = $conn -> query($sql);
              echo $result;
              $conn->close();
