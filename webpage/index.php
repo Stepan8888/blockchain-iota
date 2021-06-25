@@ -27,7 +27,7 @@
              $sql ="SELECT s.wallet_address FROM sensors s WHERE s.id=1";
              $result = $conn -> query($sql);
              $row = $result ->fetch_assoc();
-             echo $row["wallet_address"]
+             echo $row["wallet_address"];
              $conn->close();
 		}
 
