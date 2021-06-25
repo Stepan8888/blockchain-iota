@@ -157,7 +157,7 @@
     <div id="popUp2">
         <h2><b>How does it work?</b></h2>
         <h3>
-            Its really simple dont be shy :<br>
+            Its really simple dont be shy :<br><br>
             You can make a donation by clicking the Firefly logo in the top-left of the page. It will bring up the popUp window with QR codes. By scanning the QR code you can make a donation in IOTAs. Alternatively, you can make a transaction by entering the wallet adress manually. When transaction gets processed you will see the amount of kwH (which depends on the current kwH/IOTA conversion rate) deposited on the sensor on the live video feed. Enjoy, and thanks for your donations!           
         </h3>
     </div>
