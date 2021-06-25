@@ -76,7 +76,13 @@
     </header>
 
     <main>
-        <div id="tstream">
+    <iframe
+        src="https://player.twitch.tv/?channel=iotamp&parent=http://161.97.174.241/webpage/index.php"
+        height="720"
+        width="1280"
+        allowfullscreen="true">
+    </iframe>
+        <!-- <div id="tstream">
             <script type="text/javascript">
                   new Twitch.Embed("tstream", {
                     width: "100%",
@@ -90,7 +96,7 @@
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
                 </script>
-        </div>
+        </div> -->
 
     </main>
     <div id="links">
