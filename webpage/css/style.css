@@ -275,10 +275,12 @@ td{
     display: inline-block;
     width: 100%;
 }
-#qrText p {
-    margin: auto;
-    color: white;
-}
+    #qrText p {
+        margin: auto;
+        color: #D8DBE2;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+    }
 #popUp {
     width: 280px;
     height: 280px;
