@@ -277,6 +277,7 @@ td{
 }
 #qrText p {
     margin: auto;
+    color: white;
 }
 #popUp {
     width: 280px;
