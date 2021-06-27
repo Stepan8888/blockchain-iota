@@ -272,7 +272,11 @@ td{
     display: none;
 }
 #qrText {
-    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+#qrText p {
+    margin: auto;
 }
 #popUp {
     width: 280px;
