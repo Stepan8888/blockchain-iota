@@ -271,6 +271,9 @@ td{
     z-index: 100;
     display: none;
 }
+#qrText {
+    text-align: center;
+}
 #popUp {
     width: 280px;
     height: 280px;
