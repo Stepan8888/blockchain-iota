@@ -146,8 +146,8 @@
                 
                 echo '<span>
                 $row["id"];
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . $row["wallet_address"] . '">
-                </span>'
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . $row["wallet_address"] . '">;
+                </span>';
                 
                 //$counter++;
                 //echo '<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . $row["wallet_address"] . '">';
