@@ -141,7 +141,7 @@
         $row = mysqli_fetch_array($result);
         if ($result->num_rows > 0) {
             //$counter = 1
-             while($row = $result-1 -> fetch_assoc()) {
+             while($row = ($result - 1) -> fetch_assoc()) {
                 //echo '<b>Wallet #'. $counter.'</b>';
                 
                 echo '<span id="qrText">
