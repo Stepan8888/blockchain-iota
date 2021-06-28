@@ -108,8 +108,8 @@
                     <a href="https://instagram.com"><img class="logoLink" src="images/instagram.png" alt="" /></a>
                     <a href="https://telegram.com"><img class="logoLink" src="images/telegram.png" alt="" /></a>
                 </td>
-                <td><div id="click" onclick="show2('block')"><a title="click">How does it work?</a></div></td>
-                <td><a>NHL Stenden</a></td>
+                <td><div id="click" onclick="show2('block')">How does it work?</div></td>
+                <td><a href="https://www.reddit.com/r/Stenden/">NHL Stenden</a></td>
             </tr>
             <tr>
                 <td></td>
