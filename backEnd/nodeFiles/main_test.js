@@ -16,12 +16,12 @@ var runTime = 0;
 var kwhToSend=0;
 var incomingBalanceGlobal=0;
 
-function sendDataToTTN(kwh) {
+ async function sendDataToTTN(kwh) {
     try {
         nrOfTimesRun++;
         console.log("Send data method started");
         console.log("Number of times run " + nrOfTimesRun);
-        ttn.data(appID, accessKey)
+       await ttn.data(appID, accessKey)
             .then(function (client) {
                 console.log(client);
                 console.log("before client on");
@@ -32,7 +32,7 @@ function sendDataToTTN(kwh) {
 
                         // console.log("last recorded balance " + lastRecordedBalance);
                         // console.log("new balance "+ incomingBalanceGlobal);
-                        client.send("new-adri-device", convertDecimalToHex(kwh));
+                       client.send("new-adri-device", convertDecimalToHex(kwh));
                     client.off("close");
                         // kwhToSend=0;
                         // lastRecordedBalance=incomingBalanceGlobal;
