@@ -28,6 +28,9 @@ function sendDataToTTN() {
                     console.log("Received uplink from ", devID)
                     // console.log(payload)
                     if (incomingBalanceGlobal > lastRecordedBalance) {
+
+                        console.log("last recorded balance " + lastRecordedBalance);
+                        console.log("new balance "+ incomingBalanceGlobal);
                         client.send("new-adri-device", convertDecimalToHex(kwhToSend));
                         kwhToSend=0;
                         lastRecordedBalance=incomingBalanceGlobal;
@@ -101,8 +104,8 @@ async function run() {
         runTime++;
         console.log("nr of times runed " + runTime);
     } else {
-        console.log("incoming balance " + incomingBalance);
-        console.log("current balance " + lastRecordedBalance);
+        // console.log("incoming balance " + incomingBalance);
+        // console.log("current balance " + lastRecordedBalance);
         // incomingBalance=incomingBalance+10;
 
         if (incomingBalance > lastRecordedBalance) {
