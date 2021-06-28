@@ -29,9 +29,9 @@ function sendDataToTTN(kwh) {
                 console.log("then do smth");
                 client.on("uplink", function (devID, payload) {
                     console.log("Received uplink from ", devID)
-                    console.log(payload)
+                    // console.log(payload)
 
-                    // client.send("new-adri-device", convertDecimalToHex(kwh))
+                    client.send("new-adri-device", convertDecimalToHex(kwh))
                 }).catch(function (error){
                     console.error("Error", error)
 
@@ -51,9 +51,9 @@ function convertDecimalToHex(decimal) {
 
 
     let hexadecimal;
-    console.log("hexadecimal working "+decimal);
+    // console.log("hexadecimal working "+decimal);
     const size = 8;
-console.log("Value received "+decimal);
+// console.log("Value received "+decimal);
     if (decimal >= 0) {
         hexadecimal = decimal.toString(16);
         while ((hexadecimal.length % size) !== 0) {
