@@ -4,6 +4,7 @@ const ttn = require("ttn");
 
 const appID = "iotamp";
 const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
+var nrOfTimesRun=0;
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -18,58 +19,60 @@ const connectToDb = function connectToDatabase() {
         console.log("connected!");
     });
 }
-// function sendDataToTTN(kwh) {
-//     try{
-//         console.log("Send data method started");
-//         ttn.data(appID, accessKey)
-//             .then(function (client) {
-//                 console.log("then do smth");
-//                 client.on("uplink", function (devID, payload) {
-//                     console.log("Received uplink from ", devID)
-//                     console.log(payload)
-//
-//                     client.send("new-adri-device", convertDecimalToHex(kwh))
-//                 }).catch(function (error){
-//                     console.error("Error", error)
-//
-//                 })
-//             })
-//             .catch(function (error) {
-//                 console.error("Error", error)
-//                 process.exit(1)
-//             })
-//     }catch(exception_var){
-//         console.log(""+exception_var);
-//     }
-//
-// }
-//
-// function convertDecimalToHex(decimal) {
-//
-//
-//     let hexadecimal;
-//     console.log("hexadecimal working "+decimal);
-//     const size = 8;
-// console.log("Value received "+decimal);
-//     if (decimal >= 0) {
-//         hexadecimal = decimal.toString(16);
-//         while ((hexadecimal.length % size) !== 0) {
-//             hexadecimal = "" + 0 + hexadecimal;
-//         }
-//         return hexadecimal;
-//     } else {
-//         hexadecimal = Math.abs(decimal).toString(16);
-//         while ((hexadecimal.length % size) !== 0) {
-//             hexadecimal = "" + 0 + hexadecimal;
-//         }
-//         let output = '';
-//         for (i = 0; i < hexadecimal.length; i++) {
-//             output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-//         }
-//         output = (0x01 + parseInt(output, 16)).toString(16);
-//         return output;
-//     }
-// }
+function sendDataToTTN(kwh) {
+    try{
+        nrOfTimesRun++;
+        console.log("Send data method started");
+        console.log("Number of times run "+nrOfTimesRun);
+        ttn.data(appID, accessKey)
+            .then(function (client) {
+                console.log("then do smth");
+                client.on("uplink", function (devID, payload) {
+                    console.log("Received uplink from ", devID)
+                    console.log(payload)
+
+                    // client.send("new-adri-device", convertDecimalToHex(kwh))
+                }).catch(function (error){
+                    console.error("Error", error)
+
+                })
+            })
+            .catch(function (error) {
+                console.error("Error", error)
+                process.exit(1)
+            })
+    }catch(exception_var){
+        console.log(""+exception_var);
+    }
+
+}
+
+function convertDecimalToHex(decimal) {
+
+
+    let hexadecimal;
+    console.log("hexadecimal working "+decimal);
+    const size = 8;
+console.log("Value received "+decimal);
+    if (decimal >= 0) {
+        hexadecimal = decimal.toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
+        }
+        return hexadecimal;
+    } else {
+        hexadecimal = Math.abs(decimal).toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
+        }
+        let output = '';
+        for (i = 0; i < hexadecimal.length; i++) {
+            output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+        }
+        output = (0x01 + parseInt(output, 16)).toString(16);
+        return output;
+    }
+}
 
 function login(form) {
     var user = form.username.value;
@@ -102,62 +105,18 @@ const selectTransactions = function findTransaction(transactonId) {
         });
     });
 }
-// getLastRecord().then(function(rows) {
-//     // now you have your rows, you can see if there are <20 of them
-//     console.log(rows);
-// }).catch((err) => setImmediate(() => { throw err; }));
 
-
-// getEmployeeNames = function selectTransactions(outputId, callback) {
-//     return new Promise(function (resolve, reject) {
-//             con.query(
-//                     `SELECT crypto_name FROM conversions`,
-//                 function (err, rows) {
-//                     if (rows === undefined) {
-//                         reject(new Error("Error rows is undefined"));
-//                     } else {
-//                         resolve(rows);
-//                     }
-//                 }
-//             )
-//         }
-//     )
-// }
-// getEmployeeNames()
-//     .then(function (results) {
-//         return render;
-//     })
-//     .catch(function (err) {
-//         console.log("Promise rejection error: " + err);
-//     })
-// render = function (results) {
-//     for (var i in results) console.log(results[i])
-// }
-
-
-// selectTransactions("3db5bd50759db2cd15515fbeeb955c4c1eeb38111f738d5fe7eed664ec53ccbf", function (a) {
-//     console.log(a);
-//     return a;
-// })
 
 const insertTransaction = function instTransaction(transactionId,iotaValue,iotaAmount,kwh) {
-    // console.log(transactionId);
-    // let id = transactionId;
-    // console.log(id);
-    //
-    // var sql = "INSERT INTO conversions (crypto_name, rate_to_euro,last_updated) VALUES (?, 'Highway 37',null)";
-    // con.query(sql, [id], function (err, result) {
-    //     if (err) throw err;
-    //     console.log("1 record inserted");
-    // });
+
 
     return new Promise(function (resolve, reject) {
         var query_str =
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
         var query_var = [transactionId,iotaValue,iotaAmount,kwh];
-        // console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
-        // sendDataToTTN(kwh);
+        console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
+        sendDataToTTN(kwh);
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,

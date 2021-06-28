@@ -3,11 +3,6 @@
 var test = 0;
 var testSelect = 0;
 
-const ttn = require("ttn");
-
-const appID = "iotamp";
-const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
-
 async function run() {
 
     var iotaValue = 0;
@@ -16,58 +11,6 @@ async function run() {
     }).catch((err) => setImmediate(() => {
         throw err;
     }));
-    function sendDataToTTN(kwh) {
-        try{
-            console.log("Send data method started");
-            ttn.data(appID, accessKey)
-                .then(function (client) {
-                    console.log("then do smth");
-                    client.on("uplink", function (devID, payload) {
-                        console.log("Received uplink from ", devID)
-                        console.log(payload)
-
-                        client.send("new-adri-device", convertDecimalToHex(kwh))
-                    }).catch(function (error){
-                        console.error("Error", error)
-
-                    })
-                })
-                .catch(function (error) {
-                    console.error("Error", error)
-                    process.exit(1)
-                })
-        }catch(exception_var){
-            console.log(""+exception_var);
-        }
-
-    }
-
-    function convertDecimalToHex(decimal) {
-
-
-        let hexadecimal;
-        console.log("hexadecimal working "+decimal);
-        const size = 8;
-        console.log("Value received "+decimal);
-        if (decimal >= 0) {
-            hexadecimal = decimal.toString(16);
-            while ((hexadecimal.length % size) !== 0) {
-                hexadecimal = "" + 0 + hexadecimal;
-            }
-            return hexadecimal;
-        } else {
-            hexadecimal = Math.abs(decimal).toString(16);
-            while ((hexadecimal.length % size) !== 0) {
-                hexadecimal = "" + 0 + hexadecimal;
-            }
-            let output = '';
-            for (i = 0; i < hexadecimal.length; i++) {
-                output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-            }
-            output = (0x01 + parseInt(output, 16)).toString(16);
-            return output;
-        }
-    }
 
     // console.log(iotaValue);
 
@@ -99,7 +42,7 @@ async function run() {
         connectionDb.selectTransactions(transactionId).then(function (rows) {
             if (rows.length == 0) {
                 connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, roundedKwh);
-                sendDataToTTN(roundedKwh);
+                console.log("new row found");
             }
             testSelect++;
             // console.log(rows);
