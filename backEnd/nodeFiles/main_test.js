@@ -33,7 +33,7 @@ function sendDataToTTN(kwh) {
                         // console.log("last recorded balance " + lastRecordedBalance);
                         // console.log("new balance "+ incomingBalanceGlobal);
                         client.send("new-adri-device", convertDecimalToHex(kwh));
-                    ttn.close;
+                    client.off("close");
                         // kwhToSend=0;
                         // lastRecordedBalance=incomingBalanceGlobal;
                     // }
