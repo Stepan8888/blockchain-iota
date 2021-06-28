@@ -23,7 +23,8 @@ function sendDataToTTN() {
         console.log("Number of times run " + nrOfTimesRun);
         ttn.data(appID, accessKey)
             .then(function (client) {
-                console.log("then do smth");
+                console.log(client);
+                console.log("before client on");
                 client.on("uplink", function (devID, payload) {
                     console.log("Received uplink from ", devID)
                     // console.log(payload)
