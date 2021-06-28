@@ -54,7 +54,7 @@ async function run() {
 
     test++;
     // console.log(test);
-    console.log("Select run " + test++);
+    // console.log("Select run " + test++);
     done = true;
     // https://chrysalis-nodes.iota.org
 }
@@ -104,7 +104,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
 async function main() {
     process.stderr.write("--Start--")
     var data = await call_print_data(); // The main function will wait 5 minutes here
-    console.log(data)
+    // console.log(data)
 }
 main();
 // run();

@@ -143,6 +143,7 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
         var query_var = [transactionId,iotaValue,iotaAmount,kwh];
+        console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
         sendDataToTTN(kwh);
 
         con.query(query_str, query_var, function (err, rows, fields) {
