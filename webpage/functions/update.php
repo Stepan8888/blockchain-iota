@@ -3,7 +3,7 @@ require "connect.php";
 $key = htmlentities($_POST['updateKey']);
 $address = htmlentities($_POST['updateAddress']);
 $twitch = htmlentities($_POST['updateTwitch']);
-$sql = "UPDATE sensors SET lora_key='$key', wallet_address='$address', twitch='$twitch'";
+$sql = "UPDATE sensors SET lora_key='$key', wallet_address='$address', twitch='$twitch' WHERE id='$_GET['id']'";
 if(mysqli_query($conn, $sql)) {
     header("Location: ../adminPanel.php");
 } else {
