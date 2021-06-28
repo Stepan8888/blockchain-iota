@@ -16,7 +16,7 @@ var runTime = 0;
 var kwhToSend=0;
 var incomingBalanceGlobal=0;
 
-function sendDataToTTN() {
+function sendDataToTTN(kwh) {
     try {
         nrOfTimesRun++;
         console.log("Send data method started");
@@ -28,14 +28,14 @@ function sendDataToTTN() {
                 client.on("uplink", function (devID, payload) {
                     console.log("Received uplink from ", devID)
                     // console.log(payload)
-                    if (incomingBalanceGlobal > lastRecordedBalance) {
+                    // if (incomingBalanceGlobal > lastRecordedBalance) {
 
-                        console.log("last recorded balance " + lastRecordedBalance);
-                        console.log("new balance "+ incomingBalanceGlobal);
-                        client.send("new-adri-device", convertDecimalToHex(kwhToSend));
-                        kwhToSend=0;
-                        lastRecordedBalance=incomingBalanceGlobal;
-                    }
+                        // console.log("last recorded balance " + lastRecordedBalance);
+                        // console.log("new balance "+ incomingBalanceGlobal);
+                        client.send("new-adri-device", convertDecimalToHex(kwh));
+                        // kwhToSend=0;
+                        // lastRecordedBalance=incomingBalanceGlobal;
+                    // }
 
                 })
             })
@@ -45,6 +45,8 @@ function sendDataToTTN() {
             })
     } catch (exception_var) {
         console.log("" + exception_var);
+    }finally {
+        ttn.close();
     }
 
 }
@@ -119,8 +121,9 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             kwhToSend=roundedKwh;
 
+            sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
-            // currentBalance = incomingBalance;
+            lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
         }
     }
@@ -160,7 +163,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
     var count = 0;
     var interval = setInterval(async () => {
         var res = await run();
-        var sendData=await sendDataToTTN();
+        // var sendData=await sendDataToTTN();
         count += 1;
         console.log(count);
 
