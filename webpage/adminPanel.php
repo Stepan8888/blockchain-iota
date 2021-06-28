@@ -21,77 +21,45 @@
     <script src=../backEnd/nodeFiles/connection.js></script>
     <title>Admin Panel</title>
     <?php
+    
+    require "functions/connect.php";
 
     session_start();
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "X34G8gjNabFkcq";
-    $dbname = "iotamp_db";
-
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // Check connection
-    if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-    }
-
-    function deleteFromDb($key) {
-        $key = htmlentities($_GET['lora_key']);
-        $query = "DELETE FROM sensors WHERE lora_key = ?";
+    function changeUsername($conn, $user) {
+        $currentUser = $_SESSION('username');
+        $user = htmlentities($_POST['username']);
+        $sql = "UPDATE users SET user_name = ? WHERE user_name = ?";
         if(mysqli_query($conn, $sql)){
-            $stmt->bind_param('s', $key);
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ss', $user, $currentUser);
             $stmt->execute();
         }
-        $stmt->close();
+        $conn->close();
     }
 
-    function createSensor($conn, $sensorName, $loraKey, $walletAddress, $twitchStream) {
-            $loraKey = htmlentities($_POST['lora_key']);
-            $walletAddress = htmlentities($_POST['walletAddress']);
-            $twitchStream = htmlentities($_POST['twitchStream']);
-            $sensorName = htmlentities($_POST['sensorName']);
-            $sql = "INSERT INTO sensors (sensor_name, lora_key, wallet_address, twitch) VALUES (?, ?, ?, ?)";
-            if(mysqli_query($conn, $sql)){
-                $stmt->bind_param('ssss',$sensorName, $loraKey, $walletAddress, $twitchStream);
-                $stmt->execute();
-            }
-            $stmt->close();
+    function changePassword($conn, $user, $pass) {
+        $user = $_SESSION('username');
+        $pass = htmlentities($_POST['password']);
+        $sql = "UPDATE users SET password = ? WHERE user_name = ?";
+        if(mysqli_query($conn, $sql)){
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ss', $pass, $user);
+            $stmt->execute();
         }
-
-        function changeUsername($conn, $user) {
-            $currentUser = $_SESSION('username');
-            $user = htmlentities($_POST['username']);
-            $sql = "UPDATE users SET user_name = ? WHERE user_name = ?";
-            if(mysqli_query($conn, $sql)){
-                $stmt->bind_param('ss', $user, $currentUser);
-                $stmt->execute();
-            }
-            $stmt->close();
-        }
-
-        function changePassword($conn, $user, $pass) {
-            $user = $_SESSION('username');
-            $pass = htmlentities($_POST['password']);
-            $sql = "UPDATE users SET password = ? WHERE user_name = ?";
-            if(mysqli_query($conn, $sql)){
-                $stmt->bind_param('ss', $pass, $user);
-                $stmt->execute();
-            }
-            $stmt->close();
-        }
+        $conn->close();
+    }
     ?>
 </head>
 <body>
 <header>
     <h3>WELCOME TO THE ADMIN PANEL!</h3>
-    <button class="btn btn-primary" id="logout" onclick="goToPage('logout.php')" name>Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
+    <button class="btn btn-primary" id="logout" onclick="goToPage('functions/logout.php')" name>Logout &nbsp;<i class="fas fa-sign-out-alt"></i></button>
 
 </header>
 <div id="sensors">
 <?php
-    $sql = "SELECT id, lora_key, wallet_address FROM sensors";
+    $sql = "SELECT id, lora_key, wallet_address, twitch FROM sensors";
     $result = $conn -> query($sql);
 
     if ($result->num_rows > 0) {
@@ -99,14 +67,14 @@
     while($row = $result->fetch_assoc()) {
         ?>
         <div class="card">
-        <i class="fas fa-edit" onclick="show('block')"></i> <i class="fas fa-trash" onclick="deleteConfirm()"></i>
+        <i class="fas fa-edit" onclick="show('block')"></i> <i class="fas fa-trash" onclick="goToPage('functions/delete.php?id=<?php echo $row['id']?>')"></i>
         <div class="card-body">
         <?php
         echo '<h5 class="card-title">Sensor name ' . $row["id"] . '</h5>';
         echo '<p class="card-text">Lora key: ' . $row["lora_key"] . '</p>';
         echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
+        echo '<p class="card-text">Twitch stream URL: ' . $row["twitch"] . '</p>';
         ?>
-        <p class="card-text">Twitch stream URL: URL</p>
         </div>
         </div>
         <?php
@@ -114,8 +82,6 @@
     }
     $conn->close();
 ?>
-
-
     <div class="card" id="addSensor" onclick="showAddSensor('block')">
         <i class="icon-fixed-width"></i>
         <div class="card-body">
@@ -179,27 +145,25 @@
 
 <div id="popUpAddSensor">
     <i class="fa fa-window-close" aria-hidden="true" onclick="showAddSensor('none')"></i>
-
     <h2>Add Sensor</h2>
-        <form>
+        <form method="post" action="functions/addSensor.php">
         <div class="form-group" id="popUp-formBlock">
             <label>Sensor name:</label>
-            <input type="text" class="form-control" placeholder="Sensor name">
+            <input type="text" class="form-control" placeholder="Sensor name" name="sensorName">
         </div>
-    <form>
         <div class="form-group" id="popUp-formBlock">
             <label>Lora key:</label>
-            <input type="text" class="form-control" placeholder="KEY">
+            <input type="text" class="form-control" placeholder="KEY" name="loraKey">
         </div>
         <div class="form-group">
             <label>Wallet:</label>
-            <input type="text" class="form-control" placeholder="FireFly wallet address">
+            <input type="text" class="form-control" placeholder="FireFly wallet address" name="walletAddress">
         </div>
         <div class="form-group">
             <label>Twitch stream URL:</label>
-            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com">
+            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com" name="twitchStream">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" name="addSensor">Submit</button>
     </form>
 </div>
 </body>

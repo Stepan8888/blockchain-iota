@@ -10,35 +10,22 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "X34G8gjNabFkcq";
-        $dbname = "iotamp_db";
+    require "functions/connect.php";
 
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-        // Check connection
-        if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
-
-        function getData($conn) {
-            $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
-                $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_array($result);
-                if ($result->num_rows > 0) {
-                // output data of each row
-                echo $row["Total"];
-                }
-                $conn->close();
-        }
+    function getData($conn) {
+        $sql = "SELECT ROUND(SUM(energy_used), 2) AS Total FROM readings";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            if ($result->num_rows > 0) {
+            // output data of each row
+            echo $row["Total"];
+            }
+            $conn->close();
+    }
     ?> 
 </head>
 
 <body>
-
-
     <header>
         <div id="trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
             <span id="fireFly">FireFly</span>
@@ -77,12 +64,20 @@
     </iframe>
     www.blockchainnhlstenden.com
     161.97.174.241 -->
+    <?php
+    require "functions/connect.php";
+
+    $sql = "SELECT twitch FROM sensors";
+    $result = $conn -> query($sql);
+    if($result->num_rows >0) {
+        while($row = $result->fetch_assoc()) {
+        ?>   
         <div id="tstream">
             <script type="text/javascript">
                   new Twitch.Embed("tstream", {
                     width: "100%",
                     height: "100%",
-                    channel: "iotamp",
+                    channel: "<?php echo $row['twitch']?>",
                     autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
@@ -92,7 +87,10 @@
                   });
                 </script>
         </div>
-
+    <?php
+         }
+    }
+    ?>
     </main>
     <div id="links">
         <table>
@@ -129,13 +127,8 @@
     <div id="popUp">
         <h2><b>Donate</b></h2>
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "X34G8gjNabFkcq";
-        $dbname = "iotamp_db";
-
+        require "functions/connect.php";
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
         $sql ="SELECT wallet_address, id FROM sensors";
         $result = mysqli_query($conn, $sql);
         if ($result->num_rows > 0) {

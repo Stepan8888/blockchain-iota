@@ -14,27 +14,24 @@
 <body>
 <div id = "container">
 <?php
+require "connect.php";
 session_start();
-    $message="";
-    $servername = "localhost";
-    $username = "root";
-    $password = "X34G8gjNabFkcq";
-    $dbname = "iotamp_db";
-    if(count($_POST)>0) {
-        $con = mysqli_connect($servername, $username, $password, $dbname) or die('Unable To connect');
-        $result = mysqli_query($con,"SELECT id, username, password FROM users WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
-        $row  = mysqli_fetch_array($result);
-        if(is_array($row)) {
-        $_SESSION["id"] = $row['id'];
-        $_SESSION["username"] = $row['username'];
-        $_SESSION['password'] = $row['password'];
-        } else {
-         $message = "Invalid Username or Password!";
-        }
+
+if(count($_POST)>0) {
+    $con = mysqli_connect($servername, $username, $password, $dbname) or die('Unable To connect');
+    $result = mysqli_query($con,"SELECT id, username, password FROM users WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
+    $row  = mysqli_fetch_array($result);
+    if(is_array($row)) {
+    $_SESSION["id"] = $row['id'];
+    $_SESSION["username"] = $row['username'];
+    $_SESSION['password'] = $row['password'];
+    } else {
+        $message = "Invalid Username or Password!";
     }
-    if(isset($_SESSION["id"])) {
-    header("Location:adminPanel.php");
-    }
+}
+if(isset($_SESSION["id"])) {
+header("Location:adminPanel.php");
+}
 ?>
 <form method="post">
     <div class="mb-3">
