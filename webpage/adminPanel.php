@@ -73,7 +73,7 @@
             echo '<h5 class="card-title">Sensor name ' . $row["id"] . '</h5>';
             echo '<p class="card-text">Lora key: ' . $row["lora_key"] . '</p>';
             echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
-            echo '<p class="card-text">Twitch stream URL: ' . $row["twitch"] . '</p>';
+            echo '<p class="card-text">YouTube stream URL: ' . $row["twitch"] . '</p>';
             ?>
             </div>
             </div>
@@ -90,8 +90,8 @@
                         <input type="text" class="form-control" placeholder="FireFly wallet address" name="updateAddress">
                     </div>
                     <div class="form-group">
-                        <label>Twitch stream channel:</label>
-                        <input type="text" class="form-control" placeholder="iotamp" name="updateTwitch">
+                        <label>YouTube stream URL:</label>
+                        <input type="text" class="form-control" placeholder="https://www.youtube.com/embed/u3ninsiw5f4" name="updateTwitch">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -163,8 +163,8 @@
             <input type="text" class="form-control" placeholder="FireFly wallet address" name="walletAddress">
         </div>
         <div class="form-group">
-            <label>Twitch stream channel:</label>
-            <input type="text" class="form-control" placeholder="iotamp" name="twitchStream">
+            <label>YouTube stream URL:</label>
+            <input type="text" class="form-control" placeholder="https://www.youtube.com/embed/u3ninsiw5f4" name="twitchStream">
         </div>
         <button type="submit" class="btn btn-primary" name="addSensor">Submit</button>
     </form>

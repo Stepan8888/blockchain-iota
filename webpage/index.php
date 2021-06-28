@@ -66,18 +66,7 @@
         while($row = $result->fetch_assoc()) {
         ?>   
         <div class = "tstream" id="tstream<?php echo $counter;?>">
-            <script type="text/javascript">
-                  new Twitch.Embed("tstream<?php echo $counter; $counter++;?>", {
-                    width: "100%",
-                    height: "100%",
-                    channel: "<?php echo $row['twitch']?>",
-                    allowfullscreen: "true",
-                    theme: "dark",
-                    parent: ["cheapiotampdomain.cc"]
-                    // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
-                    //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
-                  });
-                </script>
+           <iframe width="100%" height="100%" src="<?php echo $row['twitch']?>?autoplay=true" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     <?php
          }
