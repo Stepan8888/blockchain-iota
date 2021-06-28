@@ -156,10 +156,11 @@ var call_print_data = () => new Promise((resolve, reject) => {
     var count = 0;
     var interval = setInterval(async () => {
         var res = await run();
+        var sendData=await sendDataToTTN();
         count += 1;
         console.log(count);
 
-    }, 3000); // 10 sec interval
+    }, 5000); // 10 sec interval
 });
 
 
