@@ -66,7 +66,7 @@
         while($row = $result->fetch_assoc()) {
         ?>   
         <div class = "tstream" id="tstream<?php echo $counter;?>">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class = "tstream" width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
            /* <script type="text/javascript">
                   new Twitch.Embed("tstream<?php echo $counter; $counter++;?>", {
                     width: "100%",
