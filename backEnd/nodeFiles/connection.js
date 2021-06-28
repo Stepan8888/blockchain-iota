@@ -1,6 +1,6 @@
 const { request } = require('https');
 const mysql = require('mysql');
-//const ttn = require("ttn");
+const ttn = require("ttn");
 
 const appID = "iotamp";
 const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
