@@ -41,7 +41,7 @@ async function run() {
         // console.log(transactionId);
         connectionDb.selectTransactions(transactionId).then(function (rows) {
             if (rows.length == 0) {
-                connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, roundedKwh);
+                connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, kwhConv);
 
             }
             testSelect++;
