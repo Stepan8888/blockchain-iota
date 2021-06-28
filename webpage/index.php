@@ -113,7 +113,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td>About us</td>
+                <td><a href="https://i.pinimg.com/originals/55/10/54/551054340cdd3a9ef4452ec51b513085.jpg">About us</a></td>
                 <td></td>
 
             </tr>
