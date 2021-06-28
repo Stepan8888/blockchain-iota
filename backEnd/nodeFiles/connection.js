@@ -19,8 +19,10 @@ const connectToDb = function connectToDatabase() {
     });
 }
 function sendDataToTTN(kwh) {
+    console.log("Send data method started");
     ttn.data(appID, accessKey)
         .then(function (client) {
+            console.log("then do smth");
             client.on("uplink", function (devID, payload) {
                 console.log("Received uplink from ", devID)
                 console.log(payload)
@@ -35,7 +37,7 @@ function sendDataToTTN(kwh) {
 }
 
 function convertDecimalToHex(decimal) {
-    console.log("Anything!!!!!!!!!!!!!!!!!!!!!!");
+
 
     let hexadecimal;
     console.log("hexadecimal working "+decimal);
