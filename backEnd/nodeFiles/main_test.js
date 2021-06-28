@@ -113,6 +113,8 @@ async function run() {
 
         if (incomingBalance > lastRecordedBalance) {
 
+            console.log("new balance "+incomingBalance);
+            console.log("last recorder balance "+lastRecordedBalance);
             //We check how many Iotas has been added to our wallet
             var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
 
