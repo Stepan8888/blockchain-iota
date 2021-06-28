@@ -1,6 +1,9 @@
 const { request } = require('https');
 const mysql = require('mysql');
+//const ttn = require("ttn");
 
+const appID = "iotamp";
+const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -14,6 +17,45 @@ const connectToDb = function connectToDatabase() {
         if (err) throw err;
         console.log("connected!");
     });
+}
+function sendDataToTTN(kwh) {
+    ttn.data(appID, accessKey)
+        .then(function (client) {
+            client.on("uplink", function (devID, payload) {
+                console.log("Received uplink from ", devID)
+                console.log(payload)
+
+                client.send("new-adri-device", convertDecimalToHex(kwh))
+            })
+        })
+        .catch(function (error) {
+            console.error("Error", error)
+            process.exit(1)
+        })
+}
+
+function convertDecimalToHex(decimal) {
+    let hexadecimal;
+    const size = 8;
+
+    if (decimal >= 0) {
+        hexadecimal = decimal.toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
+        }
+        return hexadecimal;
+    } else {
+        hexadecimal = Math.abs(decimal).toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
+        }
+        let output = '';
+        for (i = 0; i < hexadecimal.length; i++) {
+            output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+        }
+        output = (0x01 + parseInt(output, 16)).toString(16);
+        return output;
+    }
 }
 
 function login(form) {
