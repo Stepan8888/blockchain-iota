@@ -16,12 +16,12 @@ var runTime = 0;
 var kwhToSend=0;
 var incomingBalanceGlobal=0;
 
- async function sendDataToTTN(kwh) {
+function sendDataToTTN(kwh) {
     try {
         nrOfTimesRun++;
         console.log("Send data method started");
         console.log("Number of times run " + nrOfTimesRun);
-       await ttn.data(appID, accessKey)
+      ttn.data(appID, accessKey)
             .then(function (client) {
                 console.log(client);
                 console.log("before client on");
@@ -121,7 +121,7 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             kwhToSend=roundedKwh;
 
-            sendDataToTTN(roundedKwh);
+            await sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
