@@ -139,7 +139,6 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
     // });
 
     return new Promise(function (resolve, reject) {
-        var roundedKwh=Math.round(kwh);
         var query_str =
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 

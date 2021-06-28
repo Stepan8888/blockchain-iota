@@ -33,6 +33,7 @@ async function run() {
         var transactionId = output.transactionId;
         var iotaAmount = output.amount;
         var kwhConv = ((iotaAmount / 10000) * iotaValue) / 13.19;
+        var roundedKwh=Math.round(kwhConv);
         // console.log(kwhConv);
         // console.log(output);
 
@@ -40,7 +41,7 @@ async function run() {
         // console.log(transactionId);
         connectionDb.selectTransactions(transactionId).then(function (rows) {
             if (rows.length == 0) {
-                connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, kwhConv);
+                connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, roundedKwh);
 
             }
             testSelect++;
