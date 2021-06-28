@@ -27,8 +27,8 @@ header{
 
 main{
     padding-top: 60px;
-    height: 100vh;
-
+    padding-bottom: 60px;
+    height: 100%;
 }
 
 footer{
@@ -93,7 +93,7 @@ a {
     height: 55px;
     margin-top: 12%;
 
-    background-image: url(../images/iota-miota-logo.png);
+    background-image: url(images/iota-miota-logo.png);
     background-size: cover;
 }
 .logoLink{
@@ -130,7 +130,7 @@ a {
     line-height: 90px;
 }
 
-#tstream {
+.tstream {
 
     width: 85%;
     height: 550px;
@@ -146,7 +146,6 @@ a {
     width: 100%;
     background-color: #191919;
     height: 220px;
-    position: absolute;
 }
 
 #block{
@@ -407,7 +406,7 @@ a {
         line-height: 36px;
     }
 
-    #tstream {
+    .tstream {
         height: 280px;
     }
 

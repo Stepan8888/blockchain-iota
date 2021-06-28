@@ -56,31 +56,24 @@
     </header>
 
     <main>
-    <!-- <iframe
-        src="https://player.twitch.tv/?channel=iotamp&amp;parent=vmi566217.contaboserver.net/webpage/index.php"
-        height="720"
-        width="1280"
-        allowfullscreen="true">
-    </iframe>
-    www.blockchainnhlstenden.com
-    161.97.174.241 -->
     <?php
     require "functions/connect.php";
 
     $sql = "SELECT twitch FROM sensors";
     $result = $conn -> query($sql);
+    $counter = 0;
     if($result->num_rows >0) {
         while($row = $result->fetch_assoc()) {
         ?>   
-        <div id="tstream">
+        <div class = "tstream" id="tstream<?php echo $counter;?>">
             <script type="text/javascript">
-                  new Twitch.Embed("tstream", {
+                  new Twitch.Embed("tstream<?php echo $counter; $counter++;?>", {
                     width: "100%",
                     height: "100%",
                     channel: "<?php echo $row['twitch']?>",
                     allowfullscreen: "true",
                     theme: "dark",
-                    parent: ["www.cheapiotampdomain.cc"]
+                    //parent: ["www.cheapiotampdomain.cc"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
