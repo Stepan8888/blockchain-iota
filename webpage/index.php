@@ -66,7 +66,8 @@
         while($row = $result->fetch_assoc()) {
         ?>   
         <div class = "tstream" id="tstream<?php echo $counter;?>">
-            <script type="text/javascript">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           /* <script type="text/javascript">
                   new Twitch.Embed("tstream<?php echo $counter; $counter++;?>", {
                     width: "100%",
                     height: "100%",
@@ -77,13 +78,12 @@
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
-                </script>
+                </script> */
         </div>
     <?php
          }
     }
     ?>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </main>
     <div id="links">
         <table>
