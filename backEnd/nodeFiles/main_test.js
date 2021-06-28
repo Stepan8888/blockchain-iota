@@ -11,10 +11,12 @@ const CoinGecko = require('coingecko-api');
 const appID = "iotamp";
 const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
 var nrOfTimesRun = 0;
-var currentBalance = 0;
+var lastRecordedBalance = 0;
 var runTime = 0;
+var kwhToSend=0;
+var incomingBalanceGlobal=0;
 
-function sendDataToTTN(kwh,incomingBalance) {
+function sendDataToTTN() {
     try {
         nrOfTimesRun++;
         console.log("Send data method started");
@@ -25,8 +27,11 @@ function sendDataToTTN(kwh,incomingBalance) {
                 client.on("uplink", function (devID, payload) {
                     console.log("Received uplink from ", devID)
                     // console.log(payload)
-
-                    client.send("new-adri-device", convertDecimalToHex(kwh));
+                    if (incomingBalanceGlobal > lastRecordedBalance) {
+                        client.send("new-adri-device", convertDecimalToHex(kwhToSend));
+                        kwhToSend=0;
+                        lastRecordedBalance=incomingBalanceGlobal;
+                    }
 
                 })
             })
@@ -39,6 +44,7 @@ function sendDataToTTN(kwh,incomingBalance) {
     }
 
 }
+
 
 function convertDecimalToHex(decimal) {
 
@@ -88,33 +94,30 @@ async function run() {
     const incomingBalanceJson = await client.getAddressBalance('iota1qz4qx5xrl59wnnvswxk4mjvhjkdk25yveft3us2hgxd5tn2l6gz4vnwld2d');
 
     var incomingBalance = Number(incomingBalanceJson.balance.toString());
+    incomingBalanceGlobal=incomingBalance;
 
     if (runTime == 0) {
-        // currentBalance = incomingBalance
-        currentBalance=0;
+        lastRecordedBalance = incomingBalance
         runTime++;
         console.log("nr of times runed " + runTime);
     } else {
         console.log("incoming balance " + incomingBalance);
-        console.log("current balance " + currentBalance);
+        console.log("current balance " + lastRecordedBalance);
         // incomingBalance=incomingBalance+10;
 
-        if (incomingBalance > currentBalance) {
+        if (incomingBalance > lastRecordedBalance) {
 
             //We check how many Iotas has been added to our wallet
-            var amountOfIotasReceived = incomingBalance.balance - currentBalance;
-
-
+            var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
 
             //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
+            kwhToSend=roundedKwh;
 
-            sendDataToTTN(roundedKwh,incomingBalance);
-
-            //We assign new balance to old one
-            currentBalance = incomingBalance;
-            console.log("Balance after converting power " + currentBalance);
+            // //We assign new balance to old one
+            // currentBalance = incomingBalance;
+            console.log("Balance after converting power " + lastRecordedBalance);
         }
     }
 
@@ -156,7 +159,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
         count += 1;
         console.log(count);
 
-    }, 10000); // 10 sec interval
+    }, 3000); // 10 sec interval
 });
 
 
@@ -167,6 +170,7 @@ async function mainTest() {
 }
 
 mainTest();
+sendDataToTTN();
 
 
 
