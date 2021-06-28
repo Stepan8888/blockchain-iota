@@ -16,73 +16,38 @@ var runTime = 0;
 var kwhToSend=0;
 var incomingBalanceGlobal=0;
 
-const c=function sendt(kwh){
-    return new Promise(function(){
-        try {
-            nrOfTimesRun++;
-            console.log("Send data method started");
-            console.log("Number of times run " + nrOfTimesRun);
-            ttn.data(appID, accessKey)
-                .then(function (client) {
-                    console.log(client);
-                    console.log("before client on");
-                    client.on("uplink", function (devID, payload) {
-                        console.log("Received uplink from ", devID)
-                        // console.log(payload)
-                        // if (incomingBalanceGlobal > lastRecordedBalance) {
+function sendDataToTTN(kwh) {
+    try {
+        nrOfTimesRun++;
+        console.log("Send data method started");
+        console.log("Number of times run " + nrOfTimesRun);
+        ttn.data(appID, accessKey)
+            .then(function (client) {
+                console.log(client);
+                console.log("before client on");
+                client.on("uplink", function (devID, payload) {
+                    console.log("Received uplink from ", devID)
+                    // console.log(payload)
+                    // if (incomingBalanceGlobal > lastRecordedBalance) {
 
                         // console.log("last recorded balance " + lastRecordedBalance);
                         // console.log("new balance "+ incomingBalanceGlobal);
                         client.send("new-adri-device", convertDecimalToHex(kwh));
-                        client.off("close");
+                    // client.off("close");
                         // kwhToSend=0;
                         // lastRecordedBalance=incomingBalanceGlobal;
-                        // }
+                    // }
 
-                    })
                 })
-                .catch(function (error) {
-                    console.error("Error", error)
-                    process.exit(1)
-                })
-        } catch (exception_var) {
-            console.log("" + exception_var);
-        }
-    })
-    // sendDataToTTN(kwh) {
-    //     try {
-    //         nrOfTimesRun++;
-    //         console.log("Send data method started");
-    //         console.log("Number of times run " + nrOfTimesRun);
-    //         ttn.data(appID, accessKey)
-    //             .then(function (client) {
-    //                 console.log(client);
-    //                 console.log("before client on");
-    //                 client.on("uplink", function (devID, payload) {
-    //                     console.log("Received uplink from ", devID)
-    //                     // console.log(payload)
-    //                     // if (incomingBalanceGlobal > lastRecordedBalance) {
-    //
-    //                     // console.log("last recorded balance " + lastRecordedBalance);
-    //                     // console.log("new balance "+ incomingBalanceGlobal);
-    //                     client.send("new-adri-device", convertDecimalToHex(kwh));
-    //                     client.off("close");
-    //                     // kwhToSend=0;
-    //                     // lastRecordedBalance=incomingBalanceGlobal;
-    //                     // }
-    //
-    //                 })
-    //             })
-    //             .catch(function (error) {
-    //                 console.error("Error", error)
-    //                 process.exit(1)
-    //             })
-    //     } catch (exception_var) {
-    //         console.log("" + exception_var);
-    //     }
-    // }
+            })
+            .catch(function (error) {
+                console.error("Error", error)
+                process.exit(1)
+            })
+    } catch (exception_var) {
+        console.log("" + exception_var);
+    }
 }
-
 
 
 function convertDecimalToHex(decimal) {
@@ -156,7 +121,7 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             kwhToSend=roundedKwh;
 
-            await c(roundedKwh);
+            sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
