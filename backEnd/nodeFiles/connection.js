@@ -29,6 +29,9 @@ function sendDataToTTN(kwh) {
                     console.log(payload)
 
                     client.send("new-adri-device", convertDecimalToHex(kwh))
+                }).catch(function (error){
+                    console.error("Error", error)
+
                 })
             })
             .catch(function (error) {
