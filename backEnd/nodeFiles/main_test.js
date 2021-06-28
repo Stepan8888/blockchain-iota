@@ -156,7 +156,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
         count += 1;
         console.log(count);
 
-    }, 3000); // 10 sec interval
+    }, 10000); // 10 sec interval
 });
 
 
