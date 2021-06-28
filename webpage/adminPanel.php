@@ -90,8 +90,8 @@
                         <input type="text" class="form-control" placeholder="FireFly wallet address" name="updateAddress">
                     </div>
                     <div class="form-group">
-                        <label>Twitch stream URL:</label>
-                        <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com" name="updateTwitch">
+                        <label>Twitch stream channel:</label>
+                        <input type="text" class="form-control" placeholder="iotamp" name="updateTwitch">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -163,8 +163,8 @@
             <input type="text" class="form-control" placeholder="FireFly wallet address" name="walletAddress">
         </div>
         <div class="form-group">
-            <label>Twitch stream URL:</label>
-            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com" name="twitchStream">
+            <label>Twitch stream channel:</label>
+            <input type="text" class="form-control" placeholder="iotamp" name="twitchStream">
         </div>
         <button type="submit" class="btn btn-primary" name="addSensor">Submit</button>
     </form>
