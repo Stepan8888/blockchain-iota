@@ -90,7 +90,8 @@ async function run() {
     var incomingBalance = Number(incomingBalanceJson.balance.toString());
 
     if (runTime == 0) {
-        currentBalance = incomingBalance
+        // currentBalance = incomingBalance
+        currentBalance=0;
         runTime++;
         console.log("nr of times runed " + runTime);
     } else {
