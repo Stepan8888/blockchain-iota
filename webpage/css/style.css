@@ -57,7 +57,10 @@ td{
     padding-bottom: 10px;
 }
 
-
+a {
+    color: white;
+    text-decoration-line: none;
+}
 
 #trinityBlock{
     display: inline-block;
