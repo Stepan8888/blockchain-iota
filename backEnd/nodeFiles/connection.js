@@ -37,7 +37,7 @@ function sendDataToTTN(kwh) {
 function convertDecimalToHex(decimal) {
     let hexadecimal;
     const size = 8;
-
+console.log("Value received "+decimal);
     if (decimal >= 0) {
         hexadecimal = decimal.toString(16);
         while ((hexadecimal.length % size) !== 0) {
