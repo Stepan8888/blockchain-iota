@@ -138,7 +138,6 @@
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $sql ="SELECT wallet_address, id FROM sensors";
         $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
         if ($result->num_rows > 0) {
             //$counter = 1
              while($row = $result  -> fetch_assoc()) {
