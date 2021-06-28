@@ -46,7 +46,7 @@ function sendDataToTTN(kwh) {
     } catch (exception_var) {
         console.log("" + exception_var);
     }finally {
-        ttn.close();
+        ttn.close;
     }
 
 }
@@ -103,7 +103,7 @@ async function run() {
     incomingBalanceGlobal=incomingBalance;
 
     if (runTime == 0) {
-        lastRecordedBalance = incomingBalance
+        // lastRecordedBalance = incomingBalance
         runTime++;
         console.log("nr of times runed " + runTime);
     } else {
