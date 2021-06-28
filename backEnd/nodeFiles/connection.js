@@ -35,7 +35,10 @@ function sendDataToTTN(kwh) {
 }
 
 function convertDecimalToHex(decimal) {
+    console.log("Anything!!!!!!!!!!!!!!!!!!!!!!");
+
     let hexadecimal;
+    console.log("hexadecimal working "+decimal);
     const size = 8;
 console.log("Value received "+decimal);
     if (decimal >= 0) {
@@ -84,7 +87,7 @@ const selectTransactions = function findTransaction(transactonId) {
             if (err) {
                 return reject(err);
             }
-            console.log(rows);
+            // console.log(rows);
             resolve(rows);
         });
     });
