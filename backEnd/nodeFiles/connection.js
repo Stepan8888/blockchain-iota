@@ -157,7 +157,7 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
 
         var query_var = [transactionId,iotaValue,iotaAmount,kwh];
         console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
-        sendDataToTTN(kwh);
+        // sendDataToTTN(kwh);
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,
