@@ -60,24 +60,44 @@
 <div id="sensors">
 <?php
     $sql = "SELECT id, lora_key, wallet_address, twitch FROM sensors";
-    $result = $conn -> query($sql);
 
-    if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        ?>
-        <div class="card">
-        <i class="fas fa-edit" onclick="show('block')"></i> <i class="fas fa-trash" onclick="goToPage('functions/delete.php?id=<?php echo $row['id']?>')"></i>
-        <div class="card-body">
-        <?php
-        echo '<h5 class="card-title">Sensor name ' . $row["id"] . '</h5>';
-        echo '<p class="card-text">Lora key: ' . $row["lora_key"] . '</p>';
-        echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
-        echo '<p class="card-text">Twitch stream URL: ' . $row["twitch"] . '</p>';
-        ?>
-        </div>
-        </div>
-        <?php
+    if($result = mysqli_query($conn, $sql)){
+        if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            ?>
+            <div class="card">
+            <i class="fas fa-edit" onclick="show('block')"></i> <i class="fas fa-trash" onclick="goToPage('functions/delete.php?id=<?php echo $row['id']?>')"></i>
+            <div class="card-body">
+            <?php
+            echo '<h5 class="card-title">Sensor name ' . $row["id"] . '</h5>';
+            echo '<p class="card-text">Lora key: ' . $row["lora_key"] . '</p>';
+            echo '<p class="card-text">Wallet: ' . $row["wallet_address"] . '</p>';
+            echo '<p class="card-text">Twitch stream URL: ' . $row["twitch"] . '</p>';
+            ?>
+            </div>
+            </div>
+            <div id="popUp">
+                <i class="fa fa-window-close" aria-hidden="true" onclick="show('none')"></i>
+                <form method="post" action="functions/update.php?id=<?php echo $row["id"]?>">
+                    <h2>Update Sensor</h2>
+                    <div class="form-group" id="popUp-formBlock">
+                        <label>Lora key:</label>
+                        <input type="text" class="form-control" placeholder="KEY" name="updateKey">
+                    </div>
+                    <div class="form-group">
+                        <label>Wallet:</label>
+                        <input type="text" class="form-control" placeholder="FireFly wallet address" name="updateAddress">
+                    </div>
+                    <div class="form-group">
+                        <label>Twitch stream URL:</label>
+                        <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com" name="updateTwitch">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <?php
+            }
         }
     }
     $conn->close();
@@ -124,24 +144,7 @@
 
 <div class="gray" id="gray" onclick="show('none')"></div>
 <div class="gray" id="grayAddSensor" onclick="showAddSensor('none')"></div>
-<div id="popUp">
-    <i class="fa fa-window-close" aria-hidden="true" onclick="show('none')"></i>
-    <h2>Sensor name1</h2>
-        <div class="form-group" id="popUp-formBlock">
-            <label>Lora key:</label>
-            <input type="text" class="form-control" placeholder="KEY">
-        </div>
-        <div class="form-group">
-            <label>Wallet:</label>
-            <input type="text" class="form-control" placeholder="FireFly wallet address">
-        </div>
-        <div class="form-group">
-            <label>Twitch stream URL:</label>
-            <input type="text" class="form-control" placeholder="https://www.twitch.tv/example.com">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+
 
 <div id="popUpAddSensor">
     <i class="fa fa-window-close" aria-hidden="true" onclick="showAddSensor('none')"></i>

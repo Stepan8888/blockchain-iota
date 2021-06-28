@@ -14,7 +14,7 @@
 <body>
 <div id = "container">
 <?php
-require "connect.php";
+require "functions/connect.php";
 session_start();
 
 if(count($_POST)>0) {
