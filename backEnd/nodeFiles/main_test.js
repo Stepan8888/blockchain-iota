@@ -175,7 +175,8 @@ async function mainTest() {
 }
 
 mainTest();
-sendDataToTTN();
+
+
 
 
 
