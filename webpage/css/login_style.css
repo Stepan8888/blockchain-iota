@@ -23,3 +23,8 @@ body{
     color: #0f2f57;
 }
 
+@media (max-width: 650px){
+    #container{
+        width: 40%;
+    }
+}
