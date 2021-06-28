@@ -73,7 +73,7 @@
                     channel: "<?php echo $row['twitch']?>",
                     allowfullscreen: "true",
                     theme: "dark",
-                    //parent: ["www.cheapiotampdomain.cc"]
+                    parent: ["www.cheapiotampdomain.cc"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
