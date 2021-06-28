@@ -140,9 +140,9 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         if ($result->num_rows > 0) {
-            //$counter = 1
+            
              while($row = $result  -> fetch_assoc()) {
-                //echo '<b>Wallet #'. $counter.'</b>';
+                
                 
                 echo '<span id="qrText">
               <p>Sensor №' . $row["id"].'</p>
