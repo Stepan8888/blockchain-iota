@@ -78,7 +78,6 @@
                     width: "100%",
                     height: "100%",
                     channel: "<?php echo $row['twitch']?>",
-                    autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
                     parent: ["www.cheapiotampdomain.cc"]

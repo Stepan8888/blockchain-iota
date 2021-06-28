@@ -93,7 +93,7 @@ a {
     height: 55px;
     margin-top: 12%;
 
-    background-image: url(images/iota-miota-logo.png);
+    background-image: url(../images/iota-miota-logo.png);
     background-size: cover;
 }
 .logoLink{
@@ -373,7 +373,6 @@ a {
 
 #popUp2 h3 {
     margin: 8%;
-    margin-top: 8%;
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: bold;
