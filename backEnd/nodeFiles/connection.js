@@ -19,21 +19,26 @@ const connectToDb = function connectToDatabase() {
     });
 }
 function sendDataToTTN(kwh) {
-    console.log("Send data method started");
-    ttn.data(appID, accessKey)
-        .then(function (client) {
-            console.log("then do smth");
-            client.on("uplink", function (devID, payload) {
-                console.log("Received uplink from ", devID)
-                console.log(payload)
+    try{
+        console.log("Send data method started");
+        ttn.data(appID, accessKey)
+            .then(function (client) {
+                console.log("then do smth");
+                client.on("uplink", function (devID, payload) {
+                    console.log("Received uplink from ", devID)
+                    console.log(payload)
 
-                client.send("new-adri-device", convertDecimalToHex(kwh))
+                    client.send("new-adri-device", convertDecimalToHex(kwh))
+                })
             })
-        })
-        .catch(function (error) {
-            console.error("Error", error)
-            process.exit(1)
-        })
+            .catch(function (error) {
+                console.error("Error", error)
+                process.exit(1)
+            })
+    }catch(exception_var){
+        console.log(""+exception_var);
+    }
+
 }
 
 function convertDecimalToHex(decimal) {
