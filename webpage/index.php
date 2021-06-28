@@ -81,7 +81,7 @@
                     autoplay: "true",
                     allowfullscreen: "true",
                     theme: "dark",
-                    parent: ["localhost"]
+                    parent: ["www.cheapiotampdomain.cc"]
                     // works only locally. It's needed to setup a DNS and buy SSL certificate to make it work.
                     //https://discuss.dev.twitch.tv/t/twitch-embed-only-with-domain/27155
                   });
