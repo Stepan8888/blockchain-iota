@@ -11,7 +11,7 @@ const con = mysql.createConnection({
     password: "X34G8gjNabFkcq",
     database: "iotamp_db"
 });
-
+// npm install --save ttn
 const connectToDb = function connectToDatabase() {
     con.connect(function (err) {
         if (err) throw err;
@@ -142,7 +142,7 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
         var query_str =
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
-        var query_var = [transactionId,iotaValue,iotaAmount,roundedKwh];
+        var query_var = [transactionId,iotaValue,iotaAmount,kwh];
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,
