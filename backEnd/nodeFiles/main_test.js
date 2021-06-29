@@ -19,25 +19,29 @@ var incomingBalanceGlobal = 0;
 var sendPackage=false;
 
 
-function sendDataToTTN() {
-    let counter = 1;
-    const main = async function () {
-        const client = await data(appID, accessKey)
-        client
-            .on("uplink", function (devID, payload) {
-                console.log("Received uplink from ", devID)
-                console.log(payload)
-                // if(sendPackage){
-                    client.send("new-adri-device", convertDecimalToHex(kwhToSend))
+function sendDataToTTN(kwh) {
+    return new Promise(resolve => {
+        let counter = 1;
+        const main = async function () {
+            const client = await data(appID, accessKey)
+            client
+                .on("uplink", function (devID, payload) {
+                    console.log("Received uplink from ", devID)
+                    console.log(payload)
+                    // if(sendPackage){
+                    // client.send("new-adri-device", convertDecimalToHex(kwh))
+                    client.send("new-adri-device", "000C")
                     sendPackage=false;
-                // }
-                counter++
-            })
-    }
-    main().catch(function (err) {
-        console.error(err)
-        process.exit(1)
+                    // }
+                    counter++
+                })
+        }
+        main().catch(function (err) {
+            console.error(err)
+            process.exit(1)
+        })
     })
+
 }
 
 
@@ -117,7 +121,7 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-            sendDataToTTN(roundedKwh);
+            var sendData=await sendDataToTTN(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
