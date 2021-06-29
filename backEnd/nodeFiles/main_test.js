@@ -112,12 +112,12 @@ async function run() {
             console.log("new balance " + incomingBalance);
             console.log("last recorder balance " + lastRecordedBalance);
             //We check how many Iotas has been added to our wallet
-            var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
-
-            //We convert it to kwh
-            var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
-            var roundedKwh = Math.round(kwhConv);
-            kwhToSend = roundedKwh;
+            // var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
+            //
+            // //We convert it to kwh
+            // var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
+            // var roundedKwh = Math.round(kwhConv);
+            // kwhToSend = roundedKwh;
 await main();
 
             // //We assign new balance to old one
