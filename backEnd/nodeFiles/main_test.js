@@ -13,13 +13,13 @@ const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
 var nrOfTimesRun = 0;
 var lastRecordedBalance = 0;
 var runTime = 0;
-var kwhToSend=0;
-var incomingBalanceGlobal=0;
+var kwhToSend = 0;
+var incomingBalanceGlobal = 0;
 
 async function sendDataToTTN(kwh) {
     console.log("before promise")
-    return new Promise(function (){
-
+    return new Promise(function () {
+        try {
             nrOfTimesRun++;
             console.log("Send data method started");
             console.log("Number of times run " + nrOfTimesRun);
@@ -46,6 +46,9 @@ async function sendDataToTTN(kwh) {
                     console.error("Error", error)
                     process.exit(1)
                 })
+        } catch (e) {
+            throw e;
+        }
     })
 
 }
@@ -53,30 +56,34 @@ async function sendDataToTTN(kwh) {
 
 async function convertDecimalToHex(decimal) {
 
-return new Promise(function (){
-    let hexadecimal;
-    // console.log("hexadecimal working "+decimal);
-    const size = 8;
+    return new Promise(function () {
+        try {
+            let hexadecimal;
+            // console.log("hexadecimal working "+decimal);
+            const size = 8;
 // console.log("Value received "+decimal);
-    if (decimal >= 0) {
-        hexadecimal = decimal.toString(16);
-        while ((hexadecimal.length % size) !== 0) {
-            hexadecimal = "" + 0 + hexadecimal;
+            if (decimal >= 0) {
+                hexadecimal = decimal.toString();
+                while ((hexadecimal.length % size) !== 0) {
+                    hexadecimal = "" + 0 + hexadecimal;
+                }
+                return hexadecimal;
+            } else {
+                hexadecimal = Math.abs(decimal).toString(16);
+                while ((hexadecimal.length % size) !== 0) {
+                    hexadecimal = "" + 0 + hexadecimal;
+                }
+                let output = '';
+                for (i = 0; i < hexadecimal.length; i++) {
+                    output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+                }
+                output = (0x01 + parseInt(output, 16)).toString(16);
+                return output;
+            }
+        } catch (exc) {
+            throw exc;
         }
-        return hexadecimal;
-    } else {
-        hexadecimal = Math.abs(decimal).toString(16);
-        while ((hexadecimal.length % size) !== 0) {
-            hexadecimal = "" + 0 + hexadecimal;
-        }
-        let output = '';
-        for (i = 0; i < hexadecimal.length; i++) {
-            output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-        }
-        output = (0x01 + parseInt(output, 16)).toString(16);
-        return output;
-    }
-})
+    })
 
 }
 
@@ -101,7 +108,7 @@ async function run() {
     const incomingBalanceJson = await client.getAddressBalance('iota1qz4qx5xrl59wnnvswxk4mjvhjkdk25yveft3us2hgxd5tn2l6gz4vnwld2d');
 
     var incomingBalance = Number(incomingBalanceJson.balance.toString());
-    incomingBalanceGlobal=incomingBalance;
+    incomingBalanceGlobal = incomingBalance;
 
     if (runTime == 0) {
         // lastRecordedBalance = incomingBalance
@@ -114,15 +121,15 @@ async function run() {
 
         if (incomingBalance > lastRecordedBalance) {
 
-            console.log("new balance "+incomingBalance);
-            console.log("last recorder balance "+lastRecordedBalance);
+            console.log("new balance " + incomingBalance);
+            console.log("last recorder balance " + lastRecordedBalance);
             //We check how many Iotas has been added to our wallet
             var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
 
             //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
-            kwhToSend=roundedKwh;
+            kwhToSend = roundedKwh;
 
             sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
