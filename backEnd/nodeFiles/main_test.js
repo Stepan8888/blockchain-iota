@@ -19,8 +19,8 @@ var incomingBalanceGlobal = 0;
 var sendPackage=false;
 
 
-function sendDataToTTN(kwh) {
-
+async function sendDataToTTN(kwh) {
+console.log("sending data reached");
         let counter = 1;
         const main = async function () {
             const client = await data(appID, accessKey)
@@ -125,6 +125,9 @@ async function run() {
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
+            console.log("---------------------------------------------------");
+            console.log("new balance " + incomingBalance);
+            console.log("last recorder balance " + lastRecordedBalance);
             console.log("Balance after converting power " + lastRecordedBalance);
         }
     }
