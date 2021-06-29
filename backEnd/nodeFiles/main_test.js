@@ -19,38 +19,6 @@ const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
 
-const main = async function (kwh) {
-    const client = await data(appID, accessKey)
-    function conn() {
-        return new Promise(resolve => {
-            client.on("connect", function () {
-                console.log("Connection established");
-            })
-            resolve();
-        });
-    }
-    function send() {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(kwh));
-                resolve();
-            }, 5000);
-        });
-    }
-    function close() {
-        return new Promise(resolve => {
-            client.close(true, function () {
-                console.log("Conn closed");
-                resolve();
-            });
-        });
-    }
-    conn().then(send).then(close);
-}
-main().catch(function (err) {
-    console.error(err)
-    process.exit(1)
-})
 
 
 function convertDecimalToHex(decimal) {
@@ -136,6 +104,39 @@ async function run() {
 
 
 }
+
+const main = async function (kwh) {
+    const client = await data(appID, accessKey)
+    function conn() {
+        return new Promise(resolve => {
+            client.on("connect", function () {
+                console.log("Connection established");
+            })
+            resolve();
+        });
+    }
+    function send() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                client.send("new-adri-device", convertDecimalToHex(kwh));
+                resolve();
+            }, 5000);
+        });
+    }
+    function close() {
+        return new Promise(resolve => {
+            client.close(true, function () {
+                console.log("Conn closed");
+                resolve();
+            });
+        });
+    }
+    conn().then(send).then(close);
+}
+main().catch(function (err) {
+    console.error(err)
+    process.exit(1)
+})
 
 async function getIotaValue() {
 
