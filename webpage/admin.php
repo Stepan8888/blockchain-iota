@@ -28,6 +28,7 @@ session_start();
 
     header('Location: adminPanel.php');
 } else {
+    echo $result;
     echo "Invalid Username or Password!";
 }
 ?>
