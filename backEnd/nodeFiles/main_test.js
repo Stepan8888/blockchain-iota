@@ -180,8 +180,9 @@ async function run() {
             kwhToSend = roundedKwh;
 if(runned==false){
     await sendDataToTTN(roundedKwh);
-runned=true;
+
 }
+            runned=true;
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
