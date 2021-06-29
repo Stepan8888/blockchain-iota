@@ -18,7 +18,7 @@ require "functions/connect.php";
 $username = htmlentities($_POST['username']);
 $password = htmlentities($_POST['password']);
 
-$sql = "SELECT * FROM users WHERE username='$username' AND password ='$password' LIMIT 1";
+$sql = "SELECT * FROM users WHERE user_name='$username' AND password ='$password' LIMIT 1";
 $result = mysqli_query($conn, $sql);
 $row  = mysqli_fetch_array($result);
 if($result->num_rows > 0) {
