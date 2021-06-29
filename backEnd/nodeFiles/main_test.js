@@ -9,7 +9,7 @@ const {data} = require("ttn");
 
 var lastRecordedBalance = 0;
 var runTime = 0;
-var kwhToSend = 0;
+// var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
 
@@ -19,8 +19,8 @@ const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
 
-const main = async function (kwh) {
-    const client = await data(appID, accessKey)
+let main = async function (kwh) {
+    let client = await data(appID, accessKey)
     function conn() {
         return new Promise(resolve => {
             client.on("connect", function () {
@@ -118,7 +118,7 @@ async function run() {
             // //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
-            kwhToSend = roundedKwh;
+            // kwhToSend = roundedKwh;
             console.log("KWH that is being send "+roundedKwh);
 await main(roundedKwh);
 
