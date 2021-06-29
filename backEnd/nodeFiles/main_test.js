@@ -9,7 +9,7 @@ const {data} = require("ttn");
 
 var lastRecordedBalance = 0;
 var runTime = 0;
-// var kwhToSend = 0;
+var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
 
@@ -19,7 +19,7 @@ const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
 
-const main = async function (kwh) {
+const main = async function () {
     const client = await data(appID, accessKey)
     function conn() {
         return new Promise(resolve => {
@@ -32,7 +32,7 @@ const main = async function (kwh) {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(kwh));
+                client.send("new-adri-device", convertDecimalToHex(kwhToSend));
                 resolve();
             }, 5000);
         });
@@ -118,9 +118,9 @@ async function run() {
             // //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
-            // kwhToSend = roundedKwh;
-            console.log("KWH that is being send "+roundedKwh);
-            await main(roundedKwh);
+            kwhToSend = roundedKwh;
+            console.log("KWH that is being send "+kwhToSend);
+            await main();
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
