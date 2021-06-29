@@ -31,7 +31,7 @@ const main = async function () {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(10), 1883, true, "downlink/last");
+                client.send("new-adri-device", convertDecimalToHex(10));
                 resolve();
             }, 5000);
         });
