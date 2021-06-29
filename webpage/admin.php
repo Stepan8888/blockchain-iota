@@ -15,25 +15,22 @@
 <div id = "container">
 <?php
 require "functions/connect.php";
+$username = htmlentities($_POST['username']);
+$password = htmlentities($_POST['password']);
+
+$result = mysqli_query($conn,"SELECT * FROM users WHERE username='$username' AND password = '$password'");
+$row  = mysqli_fetch_array($result);
+if($result->num_rows >0) {
 session_start();
+    $_SESSION['username'] = $row['userName'];
+    $_SESSION['id'] = $row['id'];
 
-if(count($_POST)>0) {
-    $con = mysqli_connect($servername, $username, $password, $dbname) or die('Unable To connect');
-    $result = mysqli_query($con,"SELECT id, username, password FROM users WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
-    $row  = mysqli_fetch_array($result);
-    if(is_array($row)) {
-    session_start();
-        $_SESSION['username'] = $row['userName'];
-        $_SESSION['id'] = $row['id'];
-
-        header('Location:adminPanel.php');
-    } else {
-    header('Location:admin.php?action=error');
-        $message = "Invalid Username or Password!";
-    }
+    header('Location: adminPanel.php');
+} else {
+    echo "Invalid Username or Password!";
 }
 ?>
-<form method="post" action="#">
+<form method="post">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" name="username" class="form-control">
