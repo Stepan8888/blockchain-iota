@@ -19,8 +19,8 @@ const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
 
-let main = async function (kwh) {
-    let client = await data(appID, accessKey)
+const main = async function (kwh) {
+    const client = await data(appID, accessKey)
     function conn() {
         return new Promise(resolve => {
             client.on("connect", function () {
@@ -120,7 +120,7 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             // kwhToSend = roundedKwh;
             console.log("KWH that is being send "+roundedKwh);
-await main(roundedKwh);
+            await main(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
