@@ -21,20 +21,17 @@ $password = htmlentities($_POST['password']);
 $sql = "SELECT * FROM users WHERE username='$username' AND password ='$password' LIMIT 1";
 $result = mysqli_query($conn, $sql);
 $row  = mysqli_fetch_array($result);
-if(mysqli_num_rows($result) == 1) {
+if($result->num_rows > 0) {
 session_start();
     $_SESSION['username'] = $row['user_name'];
     $_SESSION['id'] = $row['id'];
 
     header('Location: adminPanel.php');
 } else {
-    echo $result;
-    echo $row['user_name'];
-    echo $row;
-    echo "Invalid Username or Password!";
+    echo mysqli_error($conn);
 }
 ?>
-<form method="post" action="#">
+<form method="post">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" name="username" class="form-control">
