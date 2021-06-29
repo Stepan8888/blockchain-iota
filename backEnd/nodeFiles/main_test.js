@@ -118,6 +118,7 @@ async function run() {
             // //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
+            console.log(kwhToSend);
             kwhToSend = roundedKwh;
             console.log("KWH that is being send "+kwhToSend);
             await main();
