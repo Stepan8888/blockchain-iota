@@ -20,7 +20,7 @@ var sendPackage=false;
 
 
 function sendDataToTTN(kwh) {
-    return new Promise(resolve => {
+
         let counter = 1;
         const main = async function () {
             const client = await data(appID, accessKey)
@@ -40,7 +40,7 @@ function sendDataToTTN(kwh) {
             console.error(err)
             process.exit(1)
         })
-    })
+
 
 }
 
@@ -121,7 +121,7 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-            var sendData=await sendDataToTTN(roundedKwh);
+            sendDataToTTN(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
