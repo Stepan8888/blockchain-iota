@@ -18,7 +18,8 @@ const appID = "iotamp";
 const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
-const main = async function () {
+
+const main = async function (kwh) {
     const client = await data(appID, accessKey)
     function conn() {
         return new Promise(resolve => {
@@ -31,7 +32,7 @@ const main = async function () {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(10));
+                client.send("new-adri-device", convertDecimalToHex(kwh));
                 resolve();
             }, 5000);
         });
@@ -112,13 +113,14 @@ async function run() {
             console.log("new balance " + incomingBalance);
             console.log("last recorder balance " + lastRecordedBalance);
             //We check how many Iotas has been added to our wallet
-            // var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
+            var amountOfIotasReceived = incomingBalance - lastRecordedBalance;
             //
             // //We convert it to kwh
-            // var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
-            // var roundedKwh = Math.round(kwhConv);
-            // kwhToSend = roundedKwh;
-await main();
+            var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
+            var roundedKwh = Math.round(kwhConv);
+            kwhToSend = roundedKwh;
+            console.log("KWH that is being send "+roundedKwh);
+await main(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
@@ -167,7 +169,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
         count += 1;
         console.log(count);
 
-    }, 5000); // 10 sec interval
+    }, 10000); // 10 sec interval
 });
 
 
