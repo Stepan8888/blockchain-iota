@@ -18,20 +18,6 @@ var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 var sendPackage=false;
 
-//
-// var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
-//
-// try{
-
-// }catch (e){
-//     throw e;
-// }
-
-
-function test(n)
-{
-    return n % 2 === 0;
-}
 
 async function sendDataToTTN() {
     let counter = 1;
@@ -53,19 +39,9 @@ async function sendDataToTTN() {
         process.exit(1)
     })
 }
-// function sendDataToTTN(kwh) {
-//     console.log("before promise")
-//     client.on('connect', function () {
-//         console.log('connected')
-//     })
-//     client.downlink('new-adri-device', convertDecimalToHex(kwh), '1h', 1);
-//     // client.send("new-adri-device", convertDecimalToHex(kwh));
-//     client.end();
-//
-//
-// }
 
-async function convertDecimalToHex(decimal) {
+
+function convertDecimalToHex(decimal) {
 
 
         try {
@@ -97,39 +73,6 @@ async function convertDecimalToHex(decimal) {
 
 
 }
-
-// function convertDecimalToHex(decimal) {
-//
-//
-//         try {
-//             let hexadecimal;
-//             // console.log("hexadecimal working "+decimal);
-//             const size = 8;
-// // console.log("Value received "+decimal);
-//             if (decimal >= 0) {
-//                 hexadecimal = decimal.toString();
-//                 while ((hexadecimal.length % size) !== 0) {
-//                     hexadecimal = "" + 0 + hexadecimal;
-//                 }
-//                 return hexadecimal;
-//             } else {
-//                 hexadecimal = Math.abs(decimal).toString(16);
-//                 while ((hexadecimal.length % size) !== 0) {
-//                     hexadecimal = "" + 0 + hexadecimal;
-//                 }
-//                 let output = '';
-//                 for (i = 0; i < hexadecimal.length; i++) {
-//                     output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-//                 }
-//                 output = (0x01 + parseInt(output, 16)).toString(16);
-//                 return output;
-//             }
-//         } catch (exc) {
-//             throw exc;
-//         }
-//
-//
-// }
 
 async function run() {
 
@@ -174,7 +117,7 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-            sendPackage=true;
+            // await sendDataToTTN(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
@@ -217,7 +160,6 @@ var call_print_data = () => new Promise((resolve, reject) => {
     var count = 0;
     var interval = setInterval(async () => {
         var res = await run();
-        var sendingData=await sendDataToTTN();
         // var sendData=await sendDataToTTN();
         count += 1;
         console.log(count);
@@ -233,7 +175,7 @@ async function mainTest() {
 }
 
 mainTest();
-// sendDataToTTN();
+sendDataToTTN(10);
 
 
 
