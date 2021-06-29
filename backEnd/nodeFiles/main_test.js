@@ -121,7 +121,7 @@ async function run() {
             // console.log(kwhToSend);
             // kwhToSend = roundedKwh;
             console.log("KWH that is being send "+roundedKwh);
-            await main();
+            await main(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
