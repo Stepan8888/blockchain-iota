@@ -217,6 +217,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
     var count = 0;
     var interval = setInterval(async () => {
         var res = await run();
+        var sendingData=await sendDataToTTN();
         // var sendData=await sendDataToTTN();
         count += 1;
         console.log(count);
@@ -232,7 +233,7 @@ async function mainTest() {
 }
 
 mainTest();
-sendDataToTTN();
+// sendDataToTTN();
 
 
 
