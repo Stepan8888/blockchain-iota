@@ -31,7 +31,7 @@ header('Location:admin.php?action=error');
     $message = "Invalid Username or Password!";
 }
 ?>
-<form method="post" action="#">
+<form method="post">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" name="username" class="form-control">
