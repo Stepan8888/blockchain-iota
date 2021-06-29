@@ -27,8 +27,7 @@ session_start();
 
     header('Location: adminPanel.php');
 } else {
-header('Location:admin.php?action=error');
-    $message = "Invalid Username or Password!";
+    echo "Invalid Username or Password!";
 }
 ?>
 <form method="post">
