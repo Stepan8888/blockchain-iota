@@ -1,4 +1,13 @@
 ﻿<!DOCTYPE html>
+
+<?php
+session_start();
+if(!$_SESSION['username']){
+    session_destroy();
+    header("Location:admin.php");
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

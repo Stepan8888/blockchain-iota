@@ -85,7 +85,7 @@ header h3{
 
 .card{
     display: inline-flex;
-    width: 22rem;
+    width: 21.5rem;
     margin: 25px 15px;
     border: 2px solid rgba(0,0,0,.125);
 }
