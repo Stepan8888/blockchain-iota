@@ -16,6 +16,20 @@ var runTime = 0;
 var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
+
+
+var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
+
+try{
+    client.on('connect', function() {
+        console.log('connected')
+    })
+}catch (e){
+    throw e;
+}
+
+
+
 async function sendDataToTTN(kwh) {
     console.log("before promise")
     return new Promise(function () {
@@ -131,7 +145,7 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
 
-            sendDataToTTN(roundedKwh);
+            // sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
