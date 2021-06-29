@@ -1,13 +1,5 @@
 ﻿<!DOCTYPE html>
 
-<?php
-session_start();
-if(!$_SESSION['username']){
-    session_destroy();
-    header("Location:admin.php");
-}
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,6 +22,8 @@ if(!$_SESSION['username']){
     <script src=../backEnd/nodeFiles/connection.js></script>
     <title>Admin Panel</title>
     <?php
+
+    session_start();
 
     require "functions/connect.php";
 

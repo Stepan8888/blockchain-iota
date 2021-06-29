@@ -20,16 +20,16 @@ $password = htmlentities($_POST['password']);
 
 $result = mysqli_query($conn,"SELECT * FROM users WHERE username='$username' AND password = '$password'");
 $row  = mysqli_fetch_array($result);
-// if($result->num_rows >0) {
-// session_start();
-//     $_SESSION['username'] = $row['userName'];
-//     $_SESSION['id'] = $row['id'];
+if($result->num_rows >0) {
+session_start();
+    $_SESSION['username'] = $row['userName'];
+    $_SESSION['id'] = $row['id'];
 
-//     header('Location: adminPanel.php');
-// } else {
-// header('Location:admin.php?action=error');
-//     $message = "Invalid Username or Password!";
-// }
+    header('Location: adminPanel.php');
+} else {
+header('Location:admin.php?action=error');
+    $message = "Invalid Username or Password!";
+}
 ?>
 <form method="post">
     <div class="mb-3">
