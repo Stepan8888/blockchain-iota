@@ -23,12 +23,11 @@
     <title>Admin Panel</title>
     <?php
 
+    session_start();
 
     if(!isset($_SESSION['username'])){
     header('Location: admin.php');
     }
-
-    session_start();
 
     require "functions/connect.php";
 
