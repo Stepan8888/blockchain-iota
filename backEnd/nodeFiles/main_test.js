@@ -121,7 +121,7 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-            sendDataToTTN(roundedKwh);
+            await sendDataToTTN(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
