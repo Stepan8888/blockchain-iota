@@ -20,9 +20,9 @@ $password = htmlentities($_POST['password']);
 
 $sql = "SELECT * FROM users WHERE user_name='$username' AND password ='$password' LIMIT 1";
 $result = mysqli_query($conn, $sql);
-$row  = mysqli_fetch_array($result);
 if($result->num_rows > 0) {
-session_start();
+    session_start();
+    $row  = mysqli_fetch_array($result);
     $_SESSION['username'] = $row['user_name'];
     $_SESSION['id'] = $row['id'];
 
