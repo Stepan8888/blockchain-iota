@@ -298,7 +298,7 @@ a {
     border-radius: 10px;
     z-index: 150;
     display: none;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 #popUp2 {
