@@ -16,8 +16,8 @@ var runTime = 0;
 var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
-
-var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
+//
+// var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
 //
 // try{
 
@@ -26,83 +26,50 @@ var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
 // }
 
 
-// async function sendDataToTTN(kwh) {
-//     console.log("before promise")
-//     return new Promise(function () {
-//         try {
-//             nrOfTimesRun++;
-//             console.log("Send data method started");
-//             console.log("Number of times run " + nrOfTimesRun);
-//             ttn.data(appID, accessKey)
-//                 .then(function (client) {
-//                     console.log(client);
-//                     console.log("before client on");
-//                     client.on("uplink", function (devID, payload) {
-//                         console.log("Received uplink from ", devID)
-//                         // console.log(payload)
-//                         client.send("new-adri-device", convertDecimalToHex(kwh));
-//
-//
-//                     })
-//                     // client.end()
-//                 })
-//                 .catch(function (error) {
-//                     console.error("Error", error)
-//                     process.exit(1)
-//                 })
-//         } catch (e) {
-//             throw e;
-//         }
-//     })
-//
-// }
-
-function sendDataToTTN(kwh) {
+async function sendDataToTTN(kwh) {
     console.log("before promise")
-    client.on('connect', function () {
-        console.log('connected')
-    })
-    client.downlink('new-adri-device', convertDecimalToHex(kwh), '1h', 1);
-    // client.send("new-adri-device", convertDecimalToHex(kwh));
-    client.end();
+
+        try {
+            nrOfTimesRun++;
+            console.log("Send data method started");
+            console.log("Number of times run " + nrOfTimesRun);
+           await ttn.data(appID, accessKey)
+                .then(function (client) {
+                    console.log(client);
+                    console.log("before client on");
+                    client.on("uplink", function (devID, payload) {
+                        console.log("Received uplink from ", devID)
+                        // console.log(payload)
+                        client.send("new-adri-device", convertDecimalToHex(kwh));
+
+
+                    })
+                    // client.end()
+                })
+                .catch(function (error) {
+                    console.error("Error", error)
+                    process.exit(1)
+                })
+        } catch (e) {
+            throw e;
+        }
 
 
 }
 
-// async function convertDecimalToHex(decimal) {
-//
-//     return new Promise(function () {
-//         try {
-//             let hexadecimal;
-//             // console.log("hexadecimal working "+decimal);
-//             const size = 8;
-// // console.log("Value received "+decimal);
-//             if (decimal >= 0) {
-//                 hexadecimal = decimal.toString();
-//                 while ((hexadecimal.length % size) !== 0) {
-//                     hexadecimal = "" + 0 + hexadecimal;
-//                 }
-//                 return hexadecimal;
-//             } else {
-//                 hexadecimal = Math.abs(decimal).toString(16);
-//                 while ((hexadecimal.length % size) !== 0) {
-//                     hexadecimal = "" + 0 + hexadecimal;
-//                 }
-//                 let output = '';
-//                 for (i = 0; i < hexadecimal.length; i++) {
-//                     output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-//                 }
-//                 output = (0x01 + parseInt(output, 16)).toString(16);
-//                 return output;
-//             }
-//         } catch (exc) {
-//             throw exc;
-//         }
+// function sendDataToTTN(kwh) {
+//     console.log("before promise")
+//     client.on('connect', function () {
+//         console.log('connected')
 //     })
+//     client.downlink('new-adri-device', convertDecimalToHex(kwh), '1h', 1);
+//     // client.send("new-adri-device", convertDecimalToHex(kwh));
+//     client.end();
+//
 //
 // }
 
-function convertDecimalToHex(decimal) {
+async function convertDecimalToHex(decimal) {
 
 
         try {
@@ -134,6 +101,39 @@ function convertDecimalToHex(decimal) {
 
 
 }
+
+// function convertDecimalToHex(decimal) {
+//
+//
+//         try {
+//             let hexadecimal;
+//             // console.log("hexadecimal working "+decimal);
+//             const size = 8;
+// // console.log("Value received "+decimal);
+//             if (decimal >= 0) {
+//                 hexadecimal = decimal.toString();
+//                 while ((hexadecimal.length % size) !== 0) {
+//                     hexadecimal = "" + 0 + hexadecimal;
+//                 }
+//                 return hexadecimal;
+//             } else {
+//                 hexadecimal = Math.abs(decimal).toString(16);
+//                 while ((hexadecimal.length % size) !== 0) {
+//                     hexadecimal = "" + 0 + hexadecimal;
+//                 }
+//                 let output = '';
+//                 for (i = 0; i < hexadecimal.length; i++) {
+//                     output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+//                 }
+//                 output = (0x01 + parseInt(output, 16)).toString(16);
+//                 return output;
+//             }
+//         } catch (exc) {
+//             throw exc;
+//         }
+//
+//
+// }
 
 async function run() {
 
