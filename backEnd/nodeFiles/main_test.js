@@ -19,7 +19,7 @@ const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
 // discover handler and open mqtt connection
 
-const main = async function () {
+const main = async function (kwh) {
     const client = await data(appID, accessKey)
     function conn() {
         return new Promise(resolve => {
@@ -32,7 +32,7 @@ const main = async function () {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(kwhToSend));
+                client.send("new-adri-device", convertDecimalToHex(kwh));
                 resolve();
             }, 5000);
         });
@@ -118,9 +118,9 @@ async function run() {
             // //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
-            console.log(kwhToSend);
-            kwhToSend = roundedKwh;
-            console.log("KWH that is being send "+kwhToSend);
+            // console.log(kwhToSend);
+            // kwhToSend = roundedKwh;
+            console.log("KWH that is being send "+roundedKwh);
             await main();
 
             // //We assign new balance to old one
