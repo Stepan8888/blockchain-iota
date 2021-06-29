@@ -29,10 +29,12 @@ session_start();
     header('Location: adminPanel.php');
 } else {
     echo $result;
+    echo $row['user_name'];
+    echo $row;
     echo "Invalid Username or Password!";
 }
 ?>
-<form method="post">
+<form method="post" action="#">
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" name="username" class="form-control">
