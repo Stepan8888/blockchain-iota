@@ -18,11 +18,12 @@ require "functions/connect.php";
 $username = htmlentities($_POST['username']);
 $password = htmlentities($_POST['password']);
 
-$result = mysqli_query($conn,"SELECT * FROM users WHERE username='$username' AND password = '$password'");
+$sql = "SELECT * FROM users WHERE username='$username' AND password ='$password' LIMIT 1";
+$result = mysqli_query($conn, $sql);
 $row  = mysqli_fetch_array($result);
-if($result->num_rows >0) {
+if(mysqli_num_rows($result) == 1) {
 session_start();
-    $_SESSION['username'] = $row['userName'];
+    $_SESSION['username'] = $row['user_name'];
     $_SESSION['id'] = $row['id'];
 
     header('Location: adminPanel.php');
