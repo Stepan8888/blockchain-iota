@@ -6,6 +6,7 @@ const ttn = require("ttn");
 // const connectionDb = require('./connection.js');
 const {ClientBuilder} = require('@iota/client');
 const CoinGecko = require('coingecko-api');
+const {data} = require("ttn");
 
 
 const appID = "iotamp";
@@ -15,7 +16,8 @@ var lastRecordedBalance = 0;
 var runTime = 0;
 var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
-var runned=false;
+var sendPackage=false;
+
 //
 // var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
 //
@@ -26,37 +28,31 @@ var runned=false;
 // }
 
 
-async function sendDataToTTN(kwh) {
-    console.log("before promise")
-
-        try {
-            nrOfTimesRun++;
-            console.log("Send data method started");
-            console.log("Number of times run " + nrOfTimesRun);
-           await ttn.data(appID, accessKey)
-                .then(function (client) {
-                    console.log(client);
-                    console.log("before client on");
-                    client.on("uplink", function (devID, payload) {
-                        console.log("Received uplink from ", devID)
-                        // console.log(payload)
-                        client.send("new-adri-device", convertDecimalToHex(kwh));
-
-
-                    })
-                    // client.end()
-                })
-                .catch(function (error) {
-                    console.error("Error", error)
-                    process.exit(1)
-                })
-        } catch (e) {
-            throw e;
-        }
-
-
+function test(n)
+{
+    return n % 2 === 0;
 }
 
+async function sendDataToTTN() {
+    let counter = 1;
+    const main = async function () {
+        const client = await data(appID, accessKey)
+        client
+            .on("uplink", function (devID, payload) {
+                console.log("Received uplink from ", devID)
+                console.log(payload)
+                if(sendPackage){
+                    client.send("new-adri-device", convertDecimalToHex(kwhToSend))
+                    sendPackage=false;
+                }
+                counter++
+            })
+    }
+    main().catch(function (err) {
+        console.error(err)
+        process.exit(1)
+    })
+}
 // function sendDataToTTN(kwh) {
 //     console.log("before promise")
 //     client.on('connect', function () {
@@ -178,11 +174,8 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-if(runned==false){
-    await sendDataToTTN(roundedKwh);
+            sendPackage=true;
 
-}
-            runned=true;
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
             console.log("Balance after converting power " + lastRecordedBalance);
@@ -190,7 +183,7 @@ if(runned==false){
     }
 
 
-    test++;
+
 
 }
 
@@ -239,6 +232,7 @@ async function mainTest() {
 }
 
 mainTest();
+sendDataToTTN();
 
 
 
