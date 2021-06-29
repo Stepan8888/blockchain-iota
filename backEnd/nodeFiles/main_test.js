@@ -27,10 +27,10 @@ async function sendDataToTTN() {
             .on("uplink", function (devID, payload) {
                 console.log("Received uplink from ", devID)
                 console.log(payload)
-                if(sendPackage){
+                // if(sendPackage){
                     client.send("new-adri-device", convertDecimalToHex(kwhToSend))
                     sendPackage=false;
-                }
+                // }
                 counter++
             })
     }
@@ -117,7 +117,7 @@ async function run() {
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
             kwhToSend = roundedKwh;
-            // await sendDataToTTN(roundedKwh);
+            await sendDataToTTN(roundedKwh);
 
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
@@ -175,7 +175,7 @@ async function mainTest() {
 }
 
 mainTest();
-sendDataToTTN(10);
+// sendDataToTTN(10);
 
 
 
