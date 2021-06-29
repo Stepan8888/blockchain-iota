@@ -33,8 +33,6 @@ if(!$_SESSION['username']){
 
     require "functions/connect.php";
 
-    session_start();
-
     function changeUsername($conn, $user) {
         $currentUser = $_SESSION('username');
         $user = htmlentities($_POST['username']);
