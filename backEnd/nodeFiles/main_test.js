@@ -109,6 +109,7 @@ async function run() {
 }
 
 const main = async function (kwh) {
+    var deviceId="new-adri-device";
     const client = await data(appID, accessKey)
     console.log(client);
     function conn() {
@@ -122,7 +123,7 @@ const main = async function (kwh) {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send("new-adri-device", convertDecimalToHex(kwh));
+                client.send(deviceId, convertDecimalToHex(kwh));
                 resolve();
             }, 5000);
         });
