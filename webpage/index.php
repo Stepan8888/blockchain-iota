@@ -58,7 +58,7 @@
         while($row = $result->fetch_assoc()) {
             ?>
             <div id="priceDiv">
-                <span id="price" title="<?php echo $row['iota_usd_price']?> ">Iota/Kph</span>
+                <span id="price" title="<?php echo $row[0]?> ">Iota/Kph</span>
             </div>
             <?php
         }
