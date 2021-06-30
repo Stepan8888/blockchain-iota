@@ -154,7 +154,7 @@
 <div id="popUpAddSensor">
     <i class="fa fa-window-close" aria-hidden="true" onclick="showAddSensor('none')"></i>
     <h2>Add Sensor</h2>
-        <form>
+        <form method="post" action="functions/addSensor.php">
         <div class="form-group" id="popUp-formBlock">
             <label>Sensor name:</label>
             <input type="text" class="form-control" placeholder="Sensor name" name="sensorName">
