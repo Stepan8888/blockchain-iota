@@ -114,7 +114,7 @@ async function run() {
 const main = async function (kwh) {
     var deviceId="new-adri-device";
     const client = await data(appID, accessKey)
-    console.log(client);
+    // console.log(client);
     function conn() {
         return new Promise(resolve => {
             client.on("connect", function () {
@@ -197,6 +197,7 @@ async function insertIotaValue(){
 }
 var run_update_iota_value = () => new Promise((resolve, reject) => {
     var count = 0;
+    console.log("insert reached");
     var interval = setInterval(async () => {
         var insert = await insertIotaValue();
         count += 1;
