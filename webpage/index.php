@@ -52,17 +52,12 @@
         $sql="SELECT iota_usd_price FROM conversions
             ORDER BY id DESC
             LIMIT 1;";
-        $result = $conn -> query($sql);
+        $resultIotaVal = $conn -> query($sql);
         $counter = 0;
-        if($result->num_rows >0) {
-        while($row = $result->fetch_assoc()) {
             ?>
             <div id="priceDiv">
-                <span id="price" title="<?php echo $row[0]?> ">Iota/Kph</span>
+                <span id="price" title="<?php echo $resultIotaVal?> ">Iota/Kph</span>
             </div>
-            <?php
-        }
-        ?>
 
         <div id="headsDiv">
             <span class="teamName" id="heads">HEADS</span>
