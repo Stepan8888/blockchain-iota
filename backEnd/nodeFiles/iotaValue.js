@@ -52,7 +52,7 @@ var run_update_iota_value = () => new Promise((resolve, reject) => {
         count += 1;
         console.log(count);
 
-    }, 10000000); // 100 min interval
+    }, 10000); // 10 sec interval
 });
 
 async function runFile() {
