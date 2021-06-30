@@ -54,11 +54,14 @@
             LIMIT 1;";
         $resultIotaVal = $conn -> query($sql);
         $counter = 0;
+        while($row=$resultIotaVal->fetch_assoc()){
             ?>
             <div id="priceDiv">
-                <span id="price" title="">"<?php echo $resultIotaVal->fetch_assoc()?> "</span>
+                <span id="price" title="">"<?php echo $row["iota_usd_price"]?> "</span>
             </div>
-
+<?php
+        }
+?>
         <div id="headsDiv">
             <span class="teamName" id="heads">HEADS</span>
         </div>
