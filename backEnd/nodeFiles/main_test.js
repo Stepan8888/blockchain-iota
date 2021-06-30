@@ -7,9 +7,10 @@ const CoinGecko = require('coingecko-api');
 
 const {data} = require("ttn");
 
+var totalEnergyBought=0;
 var lastRecordedBalance = 0;
 var runTime = 0;
-var kwhToSend = 0;
+// var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
 
@@ -88,6 +89,8 @@ async function run() {
             var roundedKwh = Math.round(kwhConv);
             // console.log(kwhToSend);
             // kwhToSend = roundedKwh;
+            totalEnergyBought+=roundedKwh;
+            // insert(roundedKwh);
             console.log("KWH that is being send "+roundedKwh);
             await main(roundedKwh);
 
@@ -107,6 +110,7 @@ async function run() {
 
 const main = async function (kwh) {
     const client = await data(appID, accessKey)
+    console.log(client);
     function conn() {
         return new Promise(resolve => {
             client.on("connect", function () {
