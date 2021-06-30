@@ -132,7 +132,7 @@ const insertIotaValue=function insertIotaValue(iotaValue){
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
         var query_var = ["",iotaValue,0,0];
-        console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
+        console.log("Iota value inserted");
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,

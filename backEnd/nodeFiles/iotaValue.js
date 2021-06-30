@@ -47,7 +47,6 @@ async function insertIotaValue(){
 }
 var run_update_iota_value = () => new Promise((resolve, reject) => {
     var count = 0;
-    console.log("Iota value inserted");
     var interval = setInterval(async () => {
         var insert = await insertIotaValue();
         count += 1;
