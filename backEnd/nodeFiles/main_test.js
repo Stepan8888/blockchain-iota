@@ -3,6 +3,8 @@
 
 const {ClientBuilder} = require('@iota/client');
 const CoinGecko = require('coingecko-api');
+const connectionDb = require('./connection.js');
+
 
 
 const {data} = require("ttn");
@@ -90,7 +92,8 @@ async function run() {
             // console.log(kwhToSend);
             // kwhToSend = roundedKwh;
             totalEnergyBought+=roundedKwh;
-            // insert(roundedKwh);
+            //Insert iota value and power that is being send to db
+            await connectionDb.insertIotaValue(iotaValue, amountOfIotasReceived, roundedKwh);
             console.log("KWH that is being send "+roundedKwh);
             await main(roundedKwh);
 

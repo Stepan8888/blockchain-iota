@@ -19,57 +19,57 @@ const connectToDb = function connectToDatabase() {
         console.log("connected!");
     });
 }
-function sendDataToTTN(kwh) {
-    try{
-        nrOfTimesRun++;
-        console.log("Send data method started");
-        console.log("Number of times run "+nrOfTimesRun);
-        ttn.data(appID, accessKey)
-            .then(function (client) {
-                console.log("then do smth");
-                client.on("uplink", function (devID, payload) {
-                    console.log("Received uplink from ", devID)
-                    // console.log(payload)
-
-                    client.send("new-adri-device", convertDecimalToHex(kwh))
-                })
-            })
-            .catch(function (error) {
-                console.error("Error", error)
-                process.exit(1)
-            })
-    }catch(exception_var){
-        console.log(""+exception_var);
-    }
-
-}
-
-function convertDecimalToHex(decimal) {
-
-
-    let hexadecimal;
-    // console.log("hexadecimal working "+decimal);
-    const size = 8;
-// console.log("Value received "+decimal);
-    if (decimal >= 0) {
-        hexadecimal = decimal.toString(16);
-        while ((hexadecimal.length % size) !== 0) {
-            hexadecimal = "" + 0 + hexadecimal;
-        }
-        return hexadecimal;
-    } else {
-        hexadecimal = Math.abs(decimal).toString(16);
-        while ((hexadecimal.length % size) !== 0) {
-            hexadecimal = "" + 0 + hexadecimal;
-        }
-        let output = '';
-        for (i = 0; i < hexadecimal.length; i++) {
-            output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-        }
-        output = (0x01 + parseInt(output, 16)).toString(16);
-        return output;
-    }
-}
+// function sendDataToTTN(kwh) {
+//     try{
+//         nrOfTimesRun++;
+//         console.log("Send data method started");
+//         console.log("Number of times run "+nrOfTimesRun);
+//         ttn.data(appID, accessKey)
+//             .then(function (client) {
+//                 console.log("then do smth");
+//                 client.on("uplink", function (devID, payload) {
+//                     console.log("Received uplink from ", devID)
+//                     // console.log(payload)
+//
+//                     client.send("new-adri-device", convertDecimalToHex(kwh))
+//                 })
+//             })
+//             .catch(function (error) {
+//                 console.error("Error", error)
+//                 process.exit(1)
+//             })
+//     }catch(exception_var){
+//         console.log(""+exception_var);
+//     }
+//
+// }
+//
+// function convertDecimalToHex(decimal) {
+//
+//
+//     let hexadecimal;
+//     // console.log("hexadecimal working "+decimal);
+//     const size = 8;
+// // console.log("Value received "+decimal);
+//     if (decimal >= 0) {
+//         hexadecimal = decimal.toString(16);
+//         while ((hexadecimal.length % size) !== 0) {
+//             hexadecimal = "" + 0 + hexadecimal;
+//         }
+//         return hexadecimal;
+//     } else {
+//         hexadecimal = Math.abs(decimal).toString(16);
+//         while ((hexadecimal.length % size) !== 0) {
+//             hexadecimal = "" + 0 + hexadecimal;
+//         }
+//         let output = '';
+//         for (i = 0; i < hexadecimal.length; i++) {
+//             output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+//         }
+//         output = (0x01 + parseInt(output, 16)).toString(16);
+//         return output;
+//     }
+// }
 
 function login(form) {
     var user = form.username.value;
@@ -113,7 +113,6 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
 
         var query_var = [transactionId,iotaValue,iotaAmount,kwh];
         console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
-        sendDataToTTN(kwh);
 
         con.query(query_str, query_var, function (err, rows, fields) {
             // Call reject on error states,
@@ -125,6 +124,27 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
         });
     });
 }
+
+const insertIotaValue=function insertIotaValue(iotaValue,iotaAmount,kwh){
+    return new Promise(function (resolve, reject) {
+        var timestamp = Date.now();
+        var query_str =
+            "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,?)";
+
+        var query_var = ["",iotaValue,iotaAmount,kwh,""+timestamp];
+        console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
+
+        con.query(query_str, query_var, function (err, rows, fields) {
+            // Call reject on error states,
+            // call resolve with results
+            if (err) {
+                return reject(err);
+            }
+            resolve(rows);
+        });
+    });
+}
+
 const endConnection = function endConnection() {
     con.end()
 };
@@ -135,6 +155,7 @@ module.exports = {
     selectTransactions: selectTransactions,
     insertTransaction: insertTransaction,
     endConnection: endConnection,
+    insertIotaValue:insertIotaValue,
     // deleteFromDb: deleteFromDb,
     // getReadingFromDb: getReadingFromDb,
 }
