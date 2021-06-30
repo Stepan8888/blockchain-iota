@@ -1,15 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.idea",
-    "\\backEnd",
-    "\\backEnd\\nodeFiles",
-    "\\testfolder",
-    "\\webpage",
-    "\\webpage\\css",
-    "\\webpage\\images",
-    "\\webpage\\routes"
+    "\\routes"
   ],
-  "SelectedNode": "\\webpage\\css\\style.css",
+  "SelectedNode": "\\routes\\routes.js",
   "PreviewInSolutionExplorer": false
 }
