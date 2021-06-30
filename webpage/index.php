@@ -56,7 +56,7 @@
         $counter = 0;
             ?>
             <div id="priceDiv">
-                <span id="price" title="">"<?php echo $resultIotaVal->free_result()?> "</span>
+                <span id="price" title="">"<?php echo $resultIotaVal->fetch_all()?> "</span>
             </div>
 
         <div id="headsDiv">
