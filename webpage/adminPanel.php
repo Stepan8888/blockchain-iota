@@ -1,13 +1,5 @@
 ﻿<!DOCTYPE html>
 
-<?php
-session_start();
-if(!$_SESSION['username']){
-    session_destroy();
-    header("Location:admin.php");
-}
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,9 +23,13 @@ if(!$_SESSION['username']){
     <title>Admin Panel</title>
     <?php
 
-    require "functions/connect.php";
-
     session_start();
+
+    if(!isset($_SESSION['username'])){
+    header('Location: admin.php');
+    }
+
+    require "functions/connect.php";
 
     function changeUsername($conn, $user) {
         $currentUser = $_SESSION('username');

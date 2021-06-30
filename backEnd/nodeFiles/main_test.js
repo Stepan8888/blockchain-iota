@@ -1,16 +1,12 @@
-// var done=false;
-var test = 0;
-var testSelect = 0;
 
-const ttn = require("ttn");
-// const connectionDb = require('./connection.js');
+
+
 const {ClientBuilder} = require('@iota/client');
 const CoinGecko = require('coingecko-api');
 
 
-const appID = "iotamp";
-const accessKey = "ttn-account-v2.ul6ObOOpCplayGGoggQBrvQjh7B30UpX7Vbw_bsJ0uY";
-var nrOfTimesRun = 0;
+const {data} = require("ttn");
+
 var lastRecordedBalance = 0;
 var runTime = 0;
 var kwhToSend = 0;
@@ -18,89 +14,38 @@ var incomingBalanceGlobal = 0;
 
 
 
-var client = new ttn.Client('staging.thethingsnetwork.org', appID, accessKey);
+const appID = "iotamp";
+const accessKey = "ttn-account-v2.bafaMl5TmV5rcphbIuVcsDCV3uGDsfy5R2beWQTRx4s";
 
-try{
-    client.on('connect', function() {
-        console.log('connected')
-    })
-}catch (e){
-    throw e;
-}
+// discover handler and open mqtt connection
 
 
 
-async function sendDataToTTN(kwh) {
-    console.log("before promise")
-    return new Promise(function () {
-        try {
-            nrOfTimesRun++;
-            console.log("Send data method started");
-            console.log("Number of times run " + nrOfTimesRun);
-            ttn.data(appID, accessKey)
-                .then(function (client) {
-                    console.log(client);
-                    console.log("before client on");
-                    client.on("uplink", function (devID, payload) {
-                        console.log("Received uplink from ", devID)
-                        // console.log(payload)
-                        // if (incomingBalanceGlobal > lastRecordedBalance) {
+function convertDecimalToHex(decimal) {
+    let hexadecimal;
+    const size = 8;
 
-                        // console.log("last recorded balance " + lastRecordedBalance);
-                        // console.log("new balance "+ incomingBalanceGlobal);
-                        client.send("new-adri-device", convertDecimalToHex(kwh));
-                        // client.off("close");
-                        // kwhToSend=0;
-                        // lastRecordedBalance=incomingBalanceGlobal;
-                        // }
-
-                    })
-                })
-                .catch(function (error) {
-                    console.error("Error", error)
-                    process.exit(1)
-                })
-        } catch (e) {
-            throw e;
+    if (decimal >= 0) {
+        hexadecimal = decimal.toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
         }
-    })
-
-}
-
-
-async function convertDecimalToHex(decimal) {
-
-    return new Promise(function () {
-        try {
-            let hexadecimal;
-            // console.log("hexadecimal working "+decimal);
-            const size = 8;
-// console.log("Value received "+decimal);
-            if (decimal >= 0) {
-                hexadecimal = decimal.toString();
-                while ((hexadecimal.length % size) !== 0) {
-                    hexadecimal = "" + 0 + hexadecimal;
-                }
-                return hexadecimal;
-            } else {
-                hexadecimal = Math.abs(decimal).toString(16);
-                while ((hexadecimal.length % size) !== 0) {
-                    hexadecimal = "" + 0 + hexadecimal;
-                }
-                let output = '';
-                for (i = 0; i < hexadecimal.length; i++) {
-                    output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
-                }
-                output = (0x01 + parseInt(output, 16)).toString(16);
-                return output;
-            }
-        } catch (exc) {
-            throw exc;
+        return hexadecimal;
+    } else {
+        hexadecimal = Math.abs(decimal).toString(16);
+        while ((hexadecimal.length % size) !== 0) {
+            hexadecimal = "" + 0 + hexadecimal;
         }
-    })
-
+        let output = '';
+        for (let i = 0; i < hexadecimal.length; i++) {
+            output += (0x0F - parseInt(hexadecimal[i], 16)).toString(16);
+        }
+        output = (0x01 + parseInt(output, 16)).toString(16);
+        return output;
+    }
 }
 
+// "---------------------------------------------------------------------------------------------------------"
 async function run() {
 
     var iotaValue = 0;
@@ -129,33 +74,69 @@ async function run() {
         runTime++;
         console.log("nr of times runed " + runTime);
     } else {
-        // console.log("incoming balance " + incomingBalance);
-        // console.log("current balance " + lastRecordedBalance);
-        // incomingBalance=incomingBalance+10;
+
 
         if (incomingBalance > lastRecordedBalance) {
 
             console.log("new balance " + incomingBalance);
             console.log("last recorder balance " + lastRecordedBalance);
             //We check how many Iotas has been added to our wallet
-            var amountOfIotasReceived = incomingBalance.balance - lastRecordedBalance;
-
-            //We convert it to kwh
+            var amountOfIotasReceived = incomingBalance - lastRecordedBalance;
+            //
+            // //We convert it to kwh
             var kwhConv = ((amountOfIotasReceived / 10000) * iotaValue) / 13.19;
             var roundedKwh = Math.round(kwhConv);
-            kwhToSend = roundedKwh;
+            // console.log(kwhToSend);
+            // kwhToSend = roundedKwh;
+            console.log("KWH that is being send "+roundedKwh);
+            await main(roundedKwh);
 
-            // sendDataToTTN(roundedKwh);
             // //We assign new balance to old one
             lastRecordedBalance = incomingBalance;
+            console.log("---------------------------------------------------");
+            console.log("new balance " + incomingBalance);
+            console.log("last recorder balance " + lastRecordedBalance);
             console.log("Balance after converting power " + lastRecordedBalance);
         }
     }
 
 
-    test++;
+
 
 }
+
+const main = async function (kwh) {
+    const client = await data(appID, accessKey)
+    function conn() {
+        return new Promise(resolve => {
+            client.on("connect", function () {
+                console.log("Connection established");
+            })
+            resolve();
+        });
+    }
+    function send() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                client.send("new-adri-device", convertDecimalToHex(kwh));
+                resolve();
+            }, 5000);
+        });
+    }
+    function close() {
+        return new Promise(resolve => {
+            client.close(true, function () {
+                console.log("Conn closed");
+                resolve();
+            });
+        });
+    }
+    conn().then(send).then(close);
+}
+main().catch(function (err) {
+    console.error(err)
+    process.exit(1)
+})
 
 async function getIotaValue() {
 
@@ -187,21 +168,20 @@ var call_print_data = () => new Promise((resolve, reject) => {
     var count = 0;
     var interval = setInterval(async () => {
         var res = await run();
-        // var sendData=await sendDataToTTN();
         count += 1;
         console.log(count);
 
-    }, 5000); // 10 sec interval
+    }, 10000); // 10 sec interval
 });
 
 
 async function mainTest() {
     process.stderr.write("--Start--")
-    var data = await call_print_data(); // The main function will wait 5 minutes here
-    // console.log(data)
+    var data = await call_print_data();
 }
 
 mainTest();
+
 
 
 
