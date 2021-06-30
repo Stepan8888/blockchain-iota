@@ -40,14 +40,14 @@ async function insertIotaValue(){
         throw err;
     }));
 
-    var kwhConv = (iotaValue) / 13.19;
+    var currentKwhToIotaVal = (iotaValue) / 13.19;
 
-    await connectionDb.insertIotaValue(iotaValue);
+    await connectionDb.insertIotaValue(currentKwhToIotaVal);
 
 }
 var run_update_iota_value = () => new Promise((resolve, reject) => {
     var count = 0;
-    console.log("insert reached");
+    console.log("Iota value inserted");
     var interval = setInterval(async () => {
         var insert = await insertIotaValue();
         count += 1;
@@ -57,7 +57,7 @@ var run_update_iota_value = () => new Promise((resolve, reject) => {
 });
 
 async function runFile() {
-    process.stderr.write("--Start--")
+    process.stderr.write("--Start-- \n")
     var iotaVal=await run_update_iota_value();
 }
 

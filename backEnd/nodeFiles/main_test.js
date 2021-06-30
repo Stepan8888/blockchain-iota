@@ -184,7 +184,7 @@ var call_print_data = () => new Promise((resolve, reject) => {
 
 
 async function mainTest() {
-    process.stderr.write("--Start--")
+    process.stderr.write("--Start-- \n")
     var data = await call_print_data();
 }
 
