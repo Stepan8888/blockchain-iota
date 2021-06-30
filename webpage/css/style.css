@@ -1,0 +1,460 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+/*Style*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body {
+    height: 100%;
+    background-color: #191919;
+    
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+
+    background: #000000;
+}
+
+main{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    height: 100%;
+}
+
+footer{
+    width: 100%;
+    height: 40px;
+
+    text-align: center;
+    background: linear-gradient(270deg, #0085FF 0%, #00F4C8 100%);
+}
+
+table {
+    width: 70%;
+    margin-left: 5.2%;
+    font-family: 'Lato', sans-serif;
+    color: white;
+
+}
+
+th {
+    text-align: left;
+    padding-top: 3%;
+    padding-bottom: 1.04%;
+    font-size: 26px;
+}
+td{
+    padding-bottom: 10px;
+}
+
+a {
+    color: white;
+    text-decoration-line: none;
+}
+
+#trinityBlock{
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+    width: 170px;
+    height: 100%;
+    margin-left: 50px;
+
+}
+
+#fireFly{
+    width: 110px;
+    height: 36px;
+    float: left;
+    margin-top: 17%;
+
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+}
+
+#trinityLogo{
+    float: left;
+    width: 55px;
+    height: 55px;
+    margin-top: 12%;
+
+    background-image: url(images/iota-miota-logo.png);
+    background-size: cover;
+}
+.logoLink{
+     width: 50px;
+     height: 50px;
+     color: white;
+}
+
+#blockDiv{
+    
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 230px;
+    height: 100%;
+    margin-left: 12%;
+}
+
+#headsDiv {
+    
+    position: relative;
+    float: right;
+    width: 230px;
+    height: 100%;
+    margin-right: 80px;
+}
+
+.teamName {
+    position: absolute;
+    font-family: 'Antonio', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 4.6vw;
+    line-height: 90px;
+}
+
+.tstream {
+
+    width: 85%;
+    height: 550px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: black;
+}
+
+#links {
+    border-top-style: solid;
+    border-top-width: 5px;
+    border-top-color: white;
+    width: 100%;
+    background-color: #191919;
+    height: 220px;
+}
+
+#block{
+    
+    background: linear-gradient(90deg, #0085FF 0%, #00F4C8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#heads {
+    
+    background: linear-gradient(270deg, #0085FF 0%, #00F4C8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#timerDiv {
+    position: absolute;
+    margin-left: 38%;
+    width: 22%;
+    height: 130px;
+    border: #FFFFFF solid 5px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 5.5vw;
+    background: #000000;
+}
+
+#timerDiv div{
+    height: 100%;
+    width: 300px;
+    margin: 0 auto;
+    padding-left: 19%;
+}
+
+#timer{
+    position: relative;
+
+    line-height: 130px;
+    background: radial-gradient(50% 309.9% at 50% 50%, #0085FF 0%, #00F4C8 99.99%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#kph{
+    position: absolute;
+    margin-left: 10px;
+    width: 40px;
+    height: 130px;
+
+    font-style: italic;
+    font-size: 1.8vw;
+    line-height: 135px;
+
+    color: #00F4C8;
+}
+
+#priceDiv{
+    width: 229px;
+    height: 36px;
+    display: inline-block;
+    float: right;
+    margin-right: 50px;
+
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.9vw;
+    line-height: 36px;
+
+    color: #FFFFFF;
+}
+
+#price{
+    position: absolute;
+
+    line-height: 50px;
+}
+
+#date{
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+
+    color: #FFFFFF;
+}
+
+#click {
+    cursor: pointer;
+}
+
+
+
+#gray{
+    background-color: rgba(1, 1, 1, 0.75);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+
+#gray2 {
+    background-color: rgba(1, 1, 1, 0.75);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+#gray3 {
+    background-color: rgba(1, 1, 1, 0.75);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+#qrText {
+    display: inline-block;
+    width: 100%;
+}
+    #qrText p {
+        margin: auto;
+        color: #D8DBE2;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+    }
+#popUp {
+    width: 280px;
+    height: 280px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #212738;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+    overflow-x: hidden;
+}
+
+#popUp2 {
+    width: 40%;
+    height: 60%;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #212738;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+}
+
+#transactPopUp {
+    width: 280px;
+    height: 280px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #212738;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 150;
+    display: none;
+}
+
+#transactPopUp h2 {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+}
+
+#transaction { 
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+    color: yellow;
+    margin-top: 30%;
+}
+#popUp h2{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+}
+
+#popUp2 h2{
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    color: #D8DBE2;
+}
+
+#popUp2 h3 {
+    margin: 8%;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    color: #D8DBE2;
+}
+#popUp img{
+    margin: 10px auto;
+}
+@media (max-width: 1000px) {
+   
+
+    #timer {
+        /*font-size: 26px;*/
+    }
+
+    #kph {
+        /*display: none;*/
+    }
+
+    
+
+    #priceDiv {
+        width: 11.9%;
+        margin-right: 20%;
+        margin-top: 3.2%;
+        font-size: 25px;
+    }
+
+    #price {
+        line-height: 36px;
+    }
+
+    .tstream {
+        height: 280px;
+    }
+
+    #graph1 {
+        height: 200px;
+    }
+
+    #graph2 {
+        height: 200px;
+    }
+
+    .logoLink {
+        height: 30px;
+        width: 30px;
+    }
+
+    th {
+        font-size: 16px;
+    }
+
+    #popUp2 {
+        width: 75%;
+    }
+
+    #popUp2 h3 {
+        font-size: 10px;
+    }
+   
+}
+@media (max-width: 1500px){
+    #blockDiv {
+        display: none;
+        position: static;
+        top: 150px;
+    }
+
+    #headsDiv {
+        display: none;
+        position: static;
+        top: 150px;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+   
+    #fireFly {
+        display: none;
+    }
+}
