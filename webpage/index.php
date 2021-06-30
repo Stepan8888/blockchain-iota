@@ -54,9 +54,12 @@
             LIMIT 1;";
         $resultIotaVal = $conn -> query($sql);
         $counter = 0;
+        if($resultIotaVal<0){
+            $resultIotaVal=0;
+        }
             ?>
             <div id="priceDiv">
-                <span id="price" title=""><?php echo $resultIotaVal?> </span>
+                <span id="price" title="">"<?php echo $resultIotaVal?> "</span>
             </div>
 
         <div id="headsDiv">
