@@ -125,13 +125,13 @@ const insertTransaction = function instTransaction(transactionId,iotaValue,iotaA
     });
 }
 
-const insertIotaValue=function insertIotaValue(iotaValue,iotaAmount,kwh){
+const insertIotaValue=function insertIotaValue(iotaValue){
     return new Promise(function (resolve, reject) {
         var timestamp = Date.now();
         var query_str =
             "INSERT INTO conversions (crypto_name, iota_usd_price,iota_amount,kwh,last_updated) VALUES (?, ?,?,?,null)";
 
-        var query_var = ["",iotaValue,iotaAmount,kwh];
+        var query_var = ["",iotaValue,"",""];
         console.log("Data inserted!!!!!!!!!!!!!!!!!!!!!!");
 
         con.query(query_str, query_var, function (err, rows, fields) {

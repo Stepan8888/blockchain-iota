@@ -93,7 +93,7 @@ async function run() {
             // kwhToSend = roundedKwh;
             totalEnergyBought+=roundedKwh;
             //Insert iota value and power that is being send to db
-            await connectionDb.insertIotaValue(iotaValue, amountOfIotasReceived, roundedKwh);
+            // await connectionDb.insertIotaValue(iotaValue, amountOfIotasReceived, roundedKwh);
             console.log("KWH that is being send "+roundedKwh);
             await main(roundedKwh);
 
@@ -182,10 +182,33 @@ var call_print_data = () => new Promise((resolve, reject) => {
     }, 10000); // 10 sec interval
 });
 
+async function insertIotaValue(){
+    var iotaValue = 0;
+    await getIotaValue().then(function (elem) {
+        iotaValue = elem;
+    }).catch((err) => setImmediate(() => {
+        throw err;
+    }));
+
+    var kwhConv = (iotaValue) / 13.19;
+
+    await connectionDb.insertIotaValue(iotaValue);
+
+}
+var run_update_iota_value = () => new Promise((resolve, reject) => {
+    var count = 0;
+    var interval = setInterval(async () => {
+        var insert = await insertIotaValue();
+        count += 1;
+        console.log(count);
+
+    }, 10000); // 10 sec interval
+});
 
 async function mainTest() {
     process.stderr.write("--Start--")
     var data = await call_print_data();
+    var iotaVal=await run_update_iota_value();
 }
 
 mainTest();
