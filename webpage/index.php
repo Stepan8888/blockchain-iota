@@ -54,13 +54,14 @@
             LIMIT 1;";
         $resultIotaVal = $conn -> query($sql);
         $counter = 0;
+        if($resultIotaVal->num_rows>0){
         while($row=$resultIotaVal->fetch_assoc()){
             ?>
             <div id="priceDiv">
                 <span id="price" title=""><?php echo $row["iota_usd_price"]?> Iota/KPH</span>
             </div>
 <?php
-        }
+        }}
 ?>
         <div id="headsDiv">
             <span class="teamName" id="heads">HEADS</span>
