@@ -15,20 +15,22 @@
 <div id = "container">
 <?php
 require "functions/connect.php";
-$username = htmlentities($_POST['username']);
-$password = htmlentities($_POST['password']);
+if(isset($_POST["login"])){
+    $username = htmlentities($_POST['username']);
+    $password = htmlentities($_POST['password']);
 
-$sql = "SELECT * FROM users WHERE user_name='$username' AND password ='$password' LIMIT 1";
-$result = mysqli_query($conn, $sql);
-if($result->num_rows > 0) {
-    session_start();
-    $row  = mysqli_fetch_array($result);
-    $_SESSION['username'] = $row['user_name'];
-    $_SESSION['id'] = $row['id'];
+    $sql = "SELECT * FROM users WHERE user_name='$username' AND password ='$password' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    if($result->num_rows > 0) {
+        session_start();
+        $row  = mysqli_fetch_array($result);
+        $_SESSION['username'] = $row['user_name'];
+        $_SESSION['id'] = $row['id'];
 
-    header('Location: adminPanel.php');
-} else {
-    echo mysqli_error($conn);
+        header('Location: adminPanel.php');
+    } else {
+        echo mysqli_error($conn);
+    }
 }
 ?>
 <form method="post">
