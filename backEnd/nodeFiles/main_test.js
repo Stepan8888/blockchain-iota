@@ -3,7 +3,7 @@
 
 const {ClientBuilder} = require('@iota/client');
 const CoinGecko = require('coingecko-api');
-const connectionDb = require('./connection.js');
+// const connectionDb = require('./connection.js');
 
 
 
@@ -126,7 +126,7 @@ const main = async function (kwh) {
     function send() {
         return new Promise(resolve => {
             setTimeout(() => {
-                client.send(deviceId, convertDecimalToHex(kwh));
+                client.send("new-adri-device", convertDecimalToHex(kwh));
                 resolve();
             }, 5000);
         });
