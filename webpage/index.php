@@ -53,6 +53,7 @@
             ORDER BY id DESC
             LIMIT 1;";
         $resultIotaVal = $conn -> query($sql);
+        echo($resultIotaVal);
         $counter = 0;
         if($resultIotaVal<0){
             $resultIotaVal=0;
