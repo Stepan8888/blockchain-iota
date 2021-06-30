@@ -56,7 +56,7 @@
         $counter = 0;
             ?>
             <div id="priceDiv">
-                <span id="price" title="<?php echo $resultIotaVal?> ">Iota/Kph</span>
+                <span id="price" title=""><?php echo $resultIotaVal?> </span>
             </div>
 
         <div id="headsDiv">
