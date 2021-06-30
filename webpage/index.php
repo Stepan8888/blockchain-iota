@@ -47,22 +47,22 @@
 <!--        <div id="priceDiv">-->
 <!--            <span id="price">0,004 FireFly/Kph</span>-->
 <!--        </div>        -->
-        <?php
-        require "functions/connect.php";
-        $sql="SELECT iota_usd_price FROM conversions
-            ORDER BY id DESC
-            LIMIT 1;";
-        $result = $conn -> query($sql);
-        $counter = 0;
-        if($result->num_rows >0) {
-        while($row = $result->fetch_assoc()) {
-            ?>
+<!--        --><?php
+//        require "functions/connect.php";
+//        $sql="SELECT iota_usd_price FROM conversions
+//            ORDER BY id DESC
+//            LIMIT 1;";
+//        $result = $conn -> query($sql);
+//        $counter = 0;
+//        if($result->num_rows >0) {
+//        while($row = $result->fetch_assoc()) {
+//            ?>
 <!--            <div id="priceDiv">-->
 <!--                <span id="price">--><?php //echo $row['iota_usd_price']?><!-- Iota/Kph</span>-->
 <!--            </div>-->
-            <?php
-        }
-        ?>
+<!--            --><?php
+//        }
+//        ?>
 
         <div id="headsDiv">
             <span class="teamName" id="heads">HEADS</span>
