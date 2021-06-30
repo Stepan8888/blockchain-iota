@@ -145,6 +145,26 @@ const insertIotaValue=function insertIotaValue(iotaValue){
     });
 }
 
+const updateIotaValue=function updateIotaValue(iotaValue){
+    return new Promise(function (resolve, reject) {
+        var timestamp = Date.now();
+        var query_str = "UPDATE conversions SET iota_usd_price=? ORDER BY id desc limit 1";
+
+        var query_var = [iotaValue];
+        console.log("Iota value updated");
+
+        con.query(query_str, query_var, function (err, rows, fields) {
+            // Call reject on error states,
+            // call resolve with results
+            if (err) {
+                return reject(err);
+            }
+            resolve(rows);
+        });
+    });
+}
+
+
 const endConnection = function endConnection() {
     con.end()
 };
@@ -155,7 +175,8 @@ module.exports = {
     selectTransactions: selectTransactions,
     insertTransaction: insertTransaction,
     endConnection: endConnection,
-    insertIotaValue:insertIotaValue,
+    // insertIotaValue:insertIotaValue,
+    updateIotaValue:updateIotaValue,
     // deleteFromDb: deleteFromDb,
     // getReadingFromDb: getReadingFromDb,
 }

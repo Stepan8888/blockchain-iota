@@ -42,7 +42,7 @@ async function insertIotaValue(){
 
     var currentKwhToIotaVal = (iotaValue) / 13.19;
 
-    await connectionDb.insertIotaValue(currentKwhToIotaVal);
+    await connectionDb.updateIotaValue(currentKwhToIotaVal);
 
 }
 var run_update_iota_value = () => new Promise((resolve, reject) => {
@@ -52,7 +52,7 @@ var run_update_iota_value = () => new Promise((resolve, reject) => {
         count += 1;
         console.log(count);
 
-    }, 10000); // 10 sec interval
+    }, 10000000); // 100 min interval
 });
 
 async function runFile() {
