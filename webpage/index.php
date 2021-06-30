@@ -37,7 +37,7 @@
 
         <div id="timerDiv">
             <div>
-                <span id="timer"><?php 
+                <span id="timer"><?php
                 getData($conn);
                 ?></span>
                 <span id="kph">Kph</span>
@@ -57,9 +57,9 @@
         if($result->num_rows >0) {
         while($row = $result->fetch_assoc()) {
             ?>
-            <div id="priceDiv">
-                <span id="price"><?php echo $row['iota_usd_price']?> Iota/Kph</span>
-            </div>
+<!--            <div id="priceDiv">-->
+<!--                <span id="price">--><?php //echo $row['iota_usd_price']?><!-- Iota/Kph</span>-->
+<!--            </div>-->
             <?php
         }
         ?>
