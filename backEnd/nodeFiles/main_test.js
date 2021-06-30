@@ -182,34 +182,10 @@ var call_print_data = () => new Promise((resolve, reject) => {
     }, 10000); // 10 sec interval
 });
 
-async function insertIotaValue(){
-    var iotaValue = 0;
-    await getIotaValue().then(function (elem) {
-        iotaValue = elem;
-    }).catch((err) => setImmediate(() => {
-        throw err;
-    }));
-
-    var kwhConv = (iotaValue) / 13.19;
-
-    await connectionDb.insertIotaValue(iotaValue);
-
-}
-var run_update_iota_value = () => new Promise((resolve, reject) => {
-    var count = 0;
-    console.log("insert reached");
-    var interval = setInterval(async () => {
-        var insert = await insertIotaValue();
-        count += 1;
-        console.log(count);
-
-    }, 10000); // 10 sec interval
-});
 
 async function mainTest() {
     process.stderr.write("--Start--")
     var data = await call_print_data();
-    var iotaVal=await run_update_iota_value();
 }
 
 mainTest();
