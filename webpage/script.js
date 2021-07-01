@@ -81,6 +81,19 @@ const con = mysql.createConnection({
     password: "X34G8gjNabFkcq",
     database: "iotamp_db"
 });*/
+// retrieve purchased iotas and display in header
+function showPurchased() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("timer").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET","./functions/dataRetriever.php",true);
+    xmlhttp.send();
+
+}
+
 function changeItem() {
     document.getElementById("fireFly").style.color = '#00F4C8';
     document.getElementById("trinityLogo").style.backgroundImage = "url(images/iota-miota-logo-blue.png)";

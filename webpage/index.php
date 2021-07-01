@@ -27,7 +27,7 @@
     ?>
 </head>
 
-<body>
+<body onload="showPurchased()">
 <header>
     <div id="trinityBlock" onmouseover="changeItem()" onclick="show('block')" onmouseout="rechangeItem()">
         <span id="fireFly">FireFly</span>
@@ -39,9 +39,7 @@
 
     <div id="timerDiv">
         <div>
-                <span id="timer"><?php
-                    getData($conn);
-                    ?></span>
+                <span id="timer"></span>
             <span id="kph">Kph</span>
         </div>
     </div>
