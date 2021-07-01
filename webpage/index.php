@@ -40,7 +40,7 @@
     <div id="timerDiv">
         <div>
                 <span id="timer"></span>
-            <span id="kph">Kph</span>
+            <span id="kph">kWh</span>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
         while ($row = $resultIotaVal->fetch_assoc()) {
             ?>
             <div id="priceDiv">
-                <span id="price" title=""><?php echo $row["iota_usd_price"] ?> Iota/KPH</span>
+                <span id="price" title=""><?php echo $row["iota_usd_price"] ?> Iota/kWh</span>
             </div>
             <?php
         }
