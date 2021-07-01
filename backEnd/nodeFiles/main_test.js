@@ -3,7 +3,6 @@
 
 const {ClientBuilder} = require('@iota/client');
 const CoinGecko = require('coingecko-api');
-// const connectionDb = require('./connection.js');
 
 
 
@@ -12,7 +11,6 @@ const {data} = require("ttn");
 var totalEnergyBought=0;
 var lastRecordedBalance = 0;
 var runTime = 0;
-// var kwhToSend = 0;
 var incomingBalanceGlobal = 0;
 
 
@@ -58,7 +56,7 @@ async function run() {
         throw err;
     }));
 
-    // console.log(iotaValue);
+
 
 
     // client will connect to testnet by default

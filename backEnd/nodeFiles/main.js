@@ -34,18 +34,14 @@ async function run() {
         var iotaAmount = output.amount;
         var kwhConv = ((iotaAmount / 10000) * iotaValue) / 13.19;
         var roundedKwh=Math.round(kwhConv);
-        // console.log(kwhConv);
-        // console.log(output);
 
 
-        // console.log(transactionId);
         connectionDb.selectTransactions(transactionId).then(function (rows) {
             if (rows.length == 0) {
                 connectionDb.insertTransaction(transactionId, iotaValue, iotaAmount, roundedKwh);
                 console.log("new row found");
             }
             testSelect++;
-            // console.log(rows);
         }).catch((err) => setImmediate(() => {
             throw err;
         }));
@@ -53,9 +49,6 @@ async function run() {
     }
 
     test++;
-    // console.log(test);
-    // console.log("Select run " + test++);
-    done = true;
     // https://chrysalis-nodes.iota.org
 }
 
@@ -93,10 +86,6 @@ var call_print_data = () => new Promise((resolve, reject) => {
         var res = await run();
         count += 1;
 
-        // if (count === 1) { // if it has been run 5 times, we resolve the promise
-        //     clearInterval(interval);
-        //     resolve(res); // result of promise
-        // }
     }, 10000); // 10 sec interval
 });
 
@@ -104,7 +93,6 @@ var call_print_data = () => new Promise((resolve, reject) => {
 async function main() {
     process.stderr.write("--Start--")
     var data = await call_print_data(); // The main function will wait 5 minutes here
-    // console.log(data)
 }
 main();
 // run();

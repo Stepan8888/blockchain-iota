@@ -18,11 +18,9 @@ async function getIotaValue() {
                 ids: ['iota'],
                 vs_currencies: ['usd'],
             });
-            // console.log(dataObt);
             var keys = Object.keys(dataObt.data);
             var subkeys = Object.keys(dataObt.data[keys[0]]);
             var currentIotaValue = dataObt.data[keys[0]][subkeys[0]];
-            // console.log(currentIotaValue);
             resolve(currentIotaValue);
         }
 
