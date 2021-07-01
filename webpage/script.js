@@ -89,9 +89,8 @@ function showPurchased() {
             document.getElementById("timer").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET","./functions/dataRetriever.php",true);
+    xmlhttp.open("GET","./functions/dataService.php",true);
     xmlhttp.send();
-
 }
 
 function changeItem() {
