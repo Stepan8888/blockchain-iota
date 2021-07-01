@@ -1,5 +1,5 @@
 <?php
-    $mysqli = new mysqli("localhost", "root", "", "iotamp_db");
+    $mysqli = new mysqli("localhost", "root", "X34G8gjNabFkcq", "iotamp_db");
     if($mysqli->connect_error) {
         exit('Could not connect');
     }
