@@ -66,9 +66,11 @@ async function run() {
         .node('https://chrysalis-nodes.iota.org')
         .build();
 
+    // org adress
+    // iota1qz4qx5xrl59wnnvswxk4mjvhjkdk25yveft3us2hgxd5tn2l6gz4vnwld2d
 
-    const incomingBalanceJson = await client.getAddressBalance('iota1qz4qx5xrl59wnnvswxk4mjvhjkdk25yveft3us2hgxd5tn2l6gz4vnwld2d');
-
+    const incomingBalanceJson = await client.getAddressBalance('iota1qzzza0y86z3u7yspkcq4d4y7u5wrk7mq56jw9qtgmrwwtv370enjw704ksd');
+console.log(incomingBalanceJson);
     var incomingBalance = Number(incomingBalanceJson.balance.toString());
     incomingBalanceGlobal = incomingBalance;
 
